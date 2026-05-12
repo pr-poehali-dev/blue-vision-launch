@@ -34,6 +34,7 @@ export function Header() {
       <nav className="container mx-auto px-6 flex items-center justify-between md:px-[24]">
         <a href="/" className="flex items-center gap-2 group" onClick={scrollToTop}>
           <img src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/2c6689e0-a3ec-42e2-9346-c40fd6a581ed.png" alt="СпецПромАгрегат-Вент" className="w-auto h-10" />
+          <span className="hidden sm:block text-white font-medium text-sm leading-tight">СпецПромАгрегат-Вент</span>
         </a>
 
         <ul className="hidden md:flex items-center gap-10 text-sm tracking-wide">
