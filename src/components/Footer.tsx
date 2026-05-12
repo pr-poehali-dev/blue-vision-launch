@@ -59,6 +59,16 @@ export function Footer() {
                 РТ, г. Набережные Челны,<br />
                 проезд Пролетарский, д. 5, офис 4
               </li>
+              <li>
+                <a
+                  href="https://yandex.ru/maps/?text=Набережные+Челны+проезд+Пролетарский+5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-foreground transition-colors underline underline-offset-4"
+                >
+                  Открыть на карте
+                </a>
+              </li>
             </ul>
           </div>
         </div>
