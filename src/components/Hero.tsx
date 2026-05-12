@@ -124,7 +124,7 @@ export function Hero() {
           alt="Поток воздуха в вентиляционной системе"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/25" />
       </div>
 
       <div
