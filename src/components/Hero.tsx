@@ -124,6 +124,7 @@ export function Hero() {
           alt="Поток воздуха в вентиляционной системе"
           className="w-full h-full object-cover object-center"
         />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       <div
@@ -137,11 +138,12 @@ export function Hero() {
         }}
       >
         <div className="mb-72 md:mb-60 lg:mb-80">
-          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-0">{"Производство воздуховодов"}</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-2 drop-shadow-lg">{"Производство воздуховодов"}</p>
 
           <h1
             ref={titleRef}
             className="text-7xl font-medium text-balance text-center text-white mb-0 tracking-tight leading-[0.9] lg:text-8xl"
+            style={{ textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.6)" }}
           >
             {"Воздуховоды из стали"}
             <br />
