@@ -55,15 +55,9 @@ export function Footer() {
                   8-927-465-44-64
                 </a>
               </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Телеграм
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  ВКонтакте
-                </a>
+              <li className="leading-snug">
+                РТ, г. Набережные Челны,<br />
+                проезд Пролетарский, д. 5, офис 4
               </li>
             </ul>
           </div>
