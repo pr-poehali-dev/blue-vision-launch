@@ -3,23 +3,23 @@ import { HighlightedText } from "./HighlightedText"
 
 const philosophyItems = [
   {
-    title: "Минимализм со смыслом",
+    title: "Собственное производство",
     description:
-      "Каждый элемент имеет свое назначение и пространство для дыхания. Мы убираем лишнее, чтобы раскрыть то, что действительно важно.",
+      "Полный цикл изготовления: от раскроя листа до готового изделия. Никаких посредников — только наш цех, наш контроль качества.",
   },
   {
-    title: "Архитектурный подход",
+    title: "Точность до миллиметра",
     description:
-      "Планировки, вдохновленные структурой, ритмом и материальностью. Здания, которые говорят через пропорции и свет.",
+      "Современное оборудование обеспечивает геометрическую точность воздуховодов и фасонных частей любой сложности. Фланцевые соединения без зазоров.",
   },
   {
-    title: "Естественная динамика",
+    title: "Сталь для любых задач",
     description:
-      "Движение поддерживает восприятие, но никогда не отвлекает. Анимация, которая ощущается естественно, как свет, скользящий по комнате.",
+      "Работаем с оцинкованной сталью для стандартных вентиляционных систем и нержавеющей сталью для пищевых производств, медицины и агрессивных сред.",
   },
   {
-    title: "Вневременная эстетика",
-    description: "Элегантный, спокойный и долговечный визуальный язык. Дизайн, который превосходит тренды и стареет с достоинством.",
+    title: "Сроки без компромиссов",
+    description: "Производим в срок даже при высокой загрузке. Складская программа обеспечивает быструю отгрузку стандартных позиций.",
   },
 ]
 
@@ -53,11 +53,11 @@ export function Philosophy() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left column - Title and image */}
           <div className="lg:sticky lg:top-32 lg:self-start">
-            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Наша философия</p>
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">О нашем производстве</p>
             <h2 className="text-6xl md:text-6xl font-medium leading-[1.15] tracking-tight mb-6 text-balance lg:text-8xl">
-              Дизайн с
+              Металл с
               <br />
-              <HighlightedText>намерением</HighlightedText>
+              <HighlightedText>точностью</HighlightedText>
             </h2>
 
             <div className="relative hidden lg:block">
@@ -72,7 +72,7 @@ export function Philosophy() {
           {/* Right column - Description and Philosophy items */}
           <div className="space-y-6 lg:pt-48">
             <p className="text-muted-foreground text-lg leading-relaxed max-w-md mb-12">
-              Архитектура - это больше, чем конструкция. Это то, как мы воспринимаем мир. Мы создаем пространства, которые питают человеческий дух.
+              Производство воздуховодов — это точность, материал и опыт. Мы делаем вентиляционные системы, которые работают десятилетиями без замены и обслуживания.
             </p>
 
             {philosophyItems.map((item, index) => (
