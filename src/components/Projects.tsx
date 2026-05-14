@@ -1,26 +1,29 @@
 import { useState } from "react"
 import { HighlightedText } from "./HighlightedText"
 
-type Category = "all" | "galvanized" | "stainless" | "industrial"
+type Category = "all" | "residential" | "administrative" | "factory" | "mall"
 
 const categories: { id: Category; label: string }[] = [
   { id: "all", label: "Все проекты" },
-  { id: "galvanized", label: "Оцинкованная сталь" },
-  { id: "stainless", label: "Нержавеющая сталь" },
-  { id: "industrial", label: "Промышленные объекты" },
+  { id: "residential", label: "Жилые дома" },
+  { id: "administrative", label: "Административные здания" },
+  { id: "factory", label: "Заводы" },
+  { id: "mall", label: "Торговые центры" },
 ]
 
 const projects = [
-  { id: 1, title: "Вентиляция торгового центра", category: "galvanized", location: "Москва", year: "2024", area: "12 000 м²", volume: "320 пм воздуховодов" },
-  { id: 2, title: "Система вытяжки пищевого цеха", category: "stainless", location: "Подмосковье", year: "2024", area: "4 500 м²", volume: "Класс B, жировые фильтры" },
-  { id: 3, title: "Промышленная вентиляция завода", category: "industrial", location: "Екатеринбург", year: "2023", area: "38 000 м²", volume: "Фасонные части 1 800 шт." },
-  { id: 4, title: "Медицинский центр — чистые зоны", category: "stainless", location: "Санкт-Петербург", year: "2023", area: "2 200 м²", volume: "ISO 7, герметичные фланцы" },
-  { id: 5, title: "Склад логистического комплекса", category: "galvanized", location: "Новосибирск", year: "2023", area: "8 700 м²", volume: "210 пм воздуховодов" },
-  { id: 6, title: "Котельная и технические помещения", category: "industrial", location: "Казань", year: "2022", area: "1 800 м²", volume: "Жаропрочная сталь 2 мм" },
-  { id: 7, title: "Бизнес-центр класса А", category: "galvanized", location: "Москва", year: "2022", area: "22 000 м²", volume: "560 пм воздуховодов" },
-  { id: 8, title: "Фармацевтическое производство", category: "stainless", location: "Владимир", year: "2021", area: "3 100 м²", volume: "GMP, класс чистоты A/B" },
-  { id: 9, title: "Металлургический цех", category: "industrial", location: "Челябинск", year: "2021", area: "14 000 м²", volume: "Вытяжные зонты, рукавные фильтры" },
-  { id: 10, title: "Торговый комплекс «Галерея»", category: "galvanized", location: "Уфа", year: "2020", area: "9 300 м²", volume: "280 пм воздуховодов" },
+  { id: 1, title: "Жилой комплекс «Новый квартал»", category: "residential", location: "Москва", year: "2024" },
+  { id: 2, title: "Многоквартирный дом, ул. Ленина", category: "residential", location: "Казань", year: "2023" },
+  { id: 3, title: "ЖК «Светлый»", category: "residential", location: "Самара", year: "2022" },
+  { id: 4, title: "Бизнес-центр класса А", category: "administrative", location: "Москва", year: "2024" },
+  { id: 5, title: "Офисный комплекс «Горизонт»", category: "administrative", location: "Екатеринбург", year: "2023" },
+  { id: 6, title: "Административное здание администрации", category: "administrative", location: "Уфа", year: "2022" },
+  { id: 7, title: "Промышленная вентиляция завода", category: "factory", location: "Екатеринбург", year: "2024" },
+  { id: 8, title: "Металлургический цех", category: "factory", location: "Челябинск", year: "2023" },
+  { id: 9, title: "Фармацевтическое производство", category: "factory", location: "Владимир", year: "2022" },
+  { id: 10, title: "Торговый центр «Галерея»", category: "mall", location: "Уфа", year: "2024" },
+  { id: 11, title: "Торговый комплекс «Мегаполис»", category: "mall", location: "Новосибирск", year: "2023" },
+  { id: 12, title: "Гипермаркет «Лента»", category: "mall", location: "Подмосковье", year: "2022" },
 ]
 
 export function Projects() {
@@ -61,13 +64,9 @@ export function Projects() {
               className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-5 border-b border-border group hover:bg-secondary/50 transition-colors px-2 -mx-2">
               <div className="flex items-baseline gap-4">
                 <span className="text-muted-foreground/40 text-sm w-6 shrink-0">{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <p className="font-medium text-base">{project.title}</p>
-                  <p className="text-muted-foreground text-sm mt-0.5">{project.volume}</p>
-                </div>
+                <p className="font-medium text-base">{project.title}</p>
               </div>
               <div className="flex items-center gap-6 sm:gap-10 pl-10 sm:pl-0 text-sm text-muted-foreground shrink-0">
-                <span>{project.area}</span>
                 <span>{project.location}</span>
                 <span className="text-muted-foreground/50">{project.year}</span>
               </div>
