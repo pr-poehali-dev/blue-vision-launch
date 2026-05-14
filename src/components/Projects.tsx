@@ -1,120 +1,77 @@
-import { useState, useEffect, useRef } from "react"
-import { ArrowUpRight } from "lucide-react"
+import { useState } from "react"
+import { HighlightedText } from "./HighlightedText"
+
+type Category = "all" | "galvanized" | "stainless" | "industrial"
+
+const categories: { id: Category; label: string }[] = [
+  { id: "all", label: "Все проекты" },
+  { id: "galvanized", label: "Оцинкованная сталь" },
+  { id: "stainless", label: "Нержавеющая сталь" },
+  { id: "industrial", label: "Промышленные объекты" },
+]
 
 const projects = [
-  {
-    id: 1,
-    title: "Вентиляция торгового центра",
-    category: "Оцинкованная сталь",
-    location: "Москва",
-    year: "2024",
-    image: "/images/hously-1.png",
-  },
-  {
-    id: 2,
-    title: "Система вытяжки пищевого цеха",
-    category: "Нержавеющая сталь",
-    location: "Подмосковье",
-    year: "2024",
-    image: "/images/hously-2.png",
-  },
-  {
-    id: 3,
-    title: "Промышленная вентиляция завода",
-    category: "Оцинкованная сталь",
-    location: "Екатеринбург",
-    year: "2023",
-    image: "/images/hously-3.png",
-  },
-  {
-    id: 4,
-    title: "Медицинский центр — чистые зоны",
-    category: "Нержавеющая сталь",
-    location: "Санкт-Петербург",
-    year: "2023",
-    image: "/images/hously-4.png",
-  },
+  { id: 1, title: "Вентиляция торгового центра", category: "galvanized", location: "Москва", year: "2024", area: "12 000 м²", volume: "320 пм воздуховодов" },
+  { id: 2, title: "Система вытяжки пищевого цеха", category: "stainless", location: "Подмосковье", year: "2024", area: "4 500 м²", volume: "Класс B, жировые фильтры" },
+  { id: 3, title: "Промышленная вентиляция завода", category: "industrial", location: "Екатеринбург", year: "2023", area: "38 000 м²", volume: "Фасонные части 1 800 шт." },
+  { id: 4, title: "Медицинский центр — чистые зоны", category: "stainless", location: "Санкт-Петербург", year: "2023", area: "2 200 м²", volume: "ISO 7, герметичные фланцы" },
+  { id: 5, title: "Склад логистического комплекса", category: "galvanized", location: "Новосибирск", year: "2023", area: "8 700 м²", volume: "210 пм воздуховодов" },
+  { id: 6, title: "Котельная и технические помещения", category: "industrial", location: "Казань", year: "2022", area: "1 800 м²", volume: "Жаропрочная сталь 2 мм" },
+  { id: 7, title: "Бизнес-центр класса А", category: "galvanized", location: "Москва", year: "2022", area: "22 000 м²", volume: "560 пм воздуховодов" },
+  { id: 8, title: "Фармацевтическое производство", category: "stainless", location: "Владимир", year: "2021", area: "3 100 м²", volume: "GMP, класс чистоты A/B" },
+  { id: 9, title: "Металлургический цех", category: "industrial", location: "Челябинск", year: "2021", area: "14 000 м²", volume: "Вытяжные зонты, рукавные фильтры" },
+  { id: 10, title: "Торговый комплекс «Галерея»", category: "galvanized", location: "Уфа", year: "2020", area: "9 300 м²", volume: "280 пм воздуховодов" },
 ]
 
 export function Projects() {
-  const [hoveredId, setHoveredId] = useState<number | null>(null)
-  const [revealedImages, setRevealedImages] = useState<Set<number>>(new Set())
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [activeTab, setActiveTab] = useState<Category>("all")
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = imageRefs.current.indexOf(entry.target as HTMLDivElement)
-            if (index !== -1) {
-              setRevealedImages((prev) => new Set(prev).add(projects[index].id))
-            }
-          }
-        })
-      },
-      { threshold: 0.2 },
-    )
-
-    imageRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref)
-    })
-
-    return () => observer.disconnect()
-  }, [])
+  const filtered = activeTab === "all" ? projects : projects.filter((p) => p.category === activeTab)
 
   return (
-    <section id="projects" className="py-32 md:py-29 bg-secondary/50">
+    <section id="projects" className="py-32 md:py-29">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <div>
-            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Выполненные объекты</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight">Наши проекты</h2>
-          </div>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-          >
-            Смотреть все проекты
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+        <div className="max-w-3xl mb-12">
+          <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Выполненные объекты</p>
+          <h2 className="text-5xl font-medium leading-[1.15] tracking-tight mb-6 text-balance lg:text-7xl">
+            <HighlightedText>Наши</HighlightedText>
+            <br />
+            проекты
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {projects.map((project, index) => (
-            <article
-              key={project.id}
-              className="group cursor-pointer"
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              <div ref={(el) => (imageRefs.current[index] = el)} className="relative overflow-hidden aspect-[4/3] mb-6">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className={`w-full h-full object-cover transition-transform duration-700 ${
-                    hoveredId === project.id ? "scale-105" : "scale-100"
-                  }`}
-                />
-                <div
-                  className="absolute inset-0 bg-primary origin-top"
-                  style={{
-                    transform: revealedImages.has(project.id) ? "scaleY(0)" : "scaleY(1)",
-                    transition: "transform 1.5s cubic-bezier(0.76, 0, 0.24, 1)",
-                  }}
-                />
-              </div>
+        {/* Вкладки */}
+        <div className="flex flex-wrap gap-2 mb-10">
+          {categories.map((c) => (
+            <button key={c.id} onClick={() => setActiveTab(c.id)}
+              className={`py-2 px-4 text-sm font-medium border transition-all duration-200 ${
+                activeTab === c.id
+                  ? "bg-foreground text-primary-foreground border-foreground"
+                  : "bg-transparent text-foreground border-border hover:border-foreground"
+              }`}>
+              {c.label}
+            </button>
+          ))}
+        </div>
 
-              <div className="flex items-start justify-between gap-4">
+        {/* Список */}
+        <div className="border-t border-border">
+          {filtered.map((project, index) => (
+            <div key={project.id}
+              className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-5 border-b border-border group hover:bg-secondary/50 transition-colors px-2 -mx-2">
+              <div className="flex items-baseline gap-4">
+                <span className="text-muted-foreground/40 text-sm w-6 shrink-0">{String(index + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3 className="text-xl font-medium mb-2 group-hover:underline underline-offset-4">{project.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {project.category} · {project.location}
-                  </p>
+                  <p className="font-medium text-base">{project.title}</p>
+                  <p className="text-muted-foreground text-sm mt-0.5">{project.volume}</p>
                 </div>
-                <span className="text-muted-foreground/60 text-sm">{project.year}</span>
               </div>
-            </article>
+              <div className="flex items-center gap-6 sm:gap-10 pl-10 sm:pl-0 text-sm text-muted-foreground shrink-0">
+                <span>{project.area}</span>
+                <span>{project.location}</span>
+                <span className="text-muted-foreground/50">{project.year}</span>
+              </div>
+            </div>
           ))}
         </div>
       </div>
