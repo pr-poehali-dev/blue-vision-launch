@@ -138,7 +138,7 @@ export function Hero() {
         }}
       >
         <div className="mb-72 md:mb-60 lg:mb-80">
-          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-2 drop-shadow-lg">{"Производство воздуховодов · работаем с 2008 года"}</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-2 drop-shadow-lg">{"Производство воздуховодов · работаем с 2016 года"}</p>
 
           <h1
             ref={titleRef}
