@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { ArrowDown } from "lucide-react"
+import Icon from "@/components/ui/icon"
 
 export function Hero() {
   const contentRef = useRef<HTMLDivElement>(null)
@@ -154,8 +155,25 @@ export function Hero() {
 
 
 
+      <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-black/30 backdrop-blur-sm">
+        <div className="container mx-auto px-6 md:px-12 py-4 flex flex-wrap items-center justify-center gap-6 md:gap-10">
+          <a href="tel:+79274654464" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
+            <Icon name="Phone" size={14} />
+            +7 (927) 465-44-64
+          </a>
+          <a href="mailto:specpromagregat-vent@yandex.ru" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
+            <Icon name="Mail" size={14} />
+            specpromagregat-vent@yandex.ru
+          </a>
+          <div className="flex items-center gap-2 text-white/60 text-sm">
+            <Icon name="Clock" size={14} />
+            Пн–Пт, 7:00–16:00
+          </div>
+        </div>
+      </div>
+
       {animationComplete && (
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce z-30">
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 animate-bounce z-30">
           <ArrowDown className="w-5 h-5 text-muted-foreground" />
         </div>
       )}
