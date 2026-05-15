@@ -34,9 +34,9 @@ export function Header() {
       <nav className="container mx-auto px-6 flex items-center justify-between md:px-[24]">
         <div className="flex items-center gap-4">
           <a href="/" className="flex items-center gap-2 group" onClick={scrollToTop}>
-            <div className="flex flex-col items-center gap-0.5">
-              <img src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/2c6689e0-a3ec-42e2-9346-c40fd6a581ed.png" alt="СпецПромАгрегат-Вент" className="w-auto h-10" />
-              <span className="text-white font-medium text-xs leading-tight tracking-wide">СпецПромАгрегат-Вент</span>
+            <div className="flex flex-col items-start gap-1">
+              <img src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/2c6689e0-a3ec-42e2-9346-c40fd6a581ed.png" alt="СпецПромАгрегат-Вент" className="w-auto h-10 drop-shadow-lg" />
+              <span className="text-white font-semibold text-sm leading-tight tracking-wider drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">СпецПромАгрегат-Вент</span>
             </div>
           </a>
           <span className="hidden lg:inline-flex items-center gap-1.5 bg-orange-500/20 border border-orange-400/40 text-orange-200 text-xs px-2.5 py-1 rounded-full">
