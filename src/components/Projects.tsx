@@ -12,18 +12,33 @@ const categories: { id: Category; label: string }[] = [
 ]
 
 const projects = [
-  { id: 1, title: "Жилой комплекс «Новый квартал»", category: "residential", location: "Москва", year: "2024" },
-  { id: 2, title: "Многоквартирный дом, ул. Ленина", category: "residential", location: "Казань", year: "2023" },
-  { id: 3, title: "ЖК «Светлый»", category: "residential", location: "Самара", year: "2022" },
-  { id: 4, title: "Бизнес-центр класса А", category: "administrative", location: "Москва", year: "2024" },
-  { id: 5, title: "Офисный комплекс «Горизонт»", category: "administrative", location: "Екатеринбург", year: "2023" },
-  { id: 6, title: "Административное здание администрации", category: "administrative", location: "Уфа", year: "2022" },
-  { id: 7, title: "Промышленная вентиляция завода", category: "factory", location: "Екатеринбург", year: "2024" },
-  { id: 8, title: "Металлургический цех", category: "factory", location: "Челябинск", year: "2023" },
-  { id: 9, title: "Фармацевтическое производство", category: "factory", location: "Владимир", year: "2022" },
-  { id: 10, title: "Торговый центр «Галерея»", category: "mall", location: "Уфа", year: "2024" },
-  { id: 11, title: "Торговый комплекс «Мегаполис»", category: "mall", location: "Новосибирск", year: "2023" },
-  { id: 12, title: "Гипермаркет «Лента»", category: "mall", location: "Подмосковье", year: "2022" },
+  { id: 1, title: "ЖК, ул. Менделеева", category: "residential", location: "Нижнекамск" },
+  { id: 2, title: "Многоквартирный жилой дом, ул. Баки Урманче", category: "residential", location: "Нижнекамск" },
+  { id: 3, title: "ЖК Кама, ул. Раскольникова", category: "residential", location: "Набережные Челны" },
+  { id: 4, title: "ЖК Маяк, ул. Раскольникова", category: "residential", location: "Набережные Челны" },
+  { id: 5, title: "ЖК Панорама, ул. Усманова", category: "residential", location: "Набережные Челны" },
+  { id: 6, title: "ЖК Перспектива, Автозаводский район", category: "residential", location: "Набережные Челны" },
+  { id: 7, title: "Жилой многоквартирный дом Зяб14/01, блок А, Б, В", category: "residential", location: "Набережные Челны" },
+  { id: 8, title: "Детские сады", category: "administrative", location: "Набережные Челны, Нижнекамск, Мензелинск" },
+  { id: 9, title: "Городская больница", category: "administrative", location: "Мензелинск" },
+  { id: 10, title: "Государственная ветклиника", category: "administrative", location: "Мензелинск" },
+  { id: 11, title: "Музыкальная школа", category: "administrative", location: "Мензелинск" },
+  { id: 12, title: "Детская школа искусств", category: "administrative", location: "Мензелинск" },
+  { id: 13, title: "Районный дворец культуры", category: "administrative", location: "Мензелинск" },
+  { id: 14, title: "МБУ «РДК» Мензелинский муниципальный район", category: "administrative", location: "Мензелинск" },
+  { id: 15, title: "Детская поликлиника №4", category: "administrative", location: "Набережные Челны" },
+  { id: 16, title: "Ликёро-водочный завод", category: "factory", location: "Набережные Челны" },
+  { id: 17, title: "Лазерное производство, пр. Вахитова", category: "factory", location: "Набережные Челны" },
+  { id: 18, title: "Литейное производство, ул. Полиграфическая", category: "factory", location: "Набережные Челны" },
+  { id: 19, title: "Фармацевтическое производство", category: "factory", location: "Набережные Челны" },
+  { id: 20, title: "Сырный завод Нурлат", category: "factory", location: "Нурлат" },
+  { id: 21, title: "Цех химических элементов", category: "factory", location: "Набережные Челны" },
+  { id: 22, title: "Цех переработки мясных продуктов", category: "factory", location: "Набережные Челны" },
+  { id: 23, title: "Ангары", category: "factory", location: "Чукотский автономный округ" },
+  { id: 24, title: "ТЦ, ул. Химиков", category: "mall", location: "Нижнекамск" },
+  { id: 25, title: "Клевер Спорт", category: "mall", location: "Набережные Челны" },
+  { id: 26, title: "Сеть кафе Банзай", category: "mall", location: "Набережные Челны" },
+  { id: 27, title: "Кафе-клуб Дарвин", category: "mall", location: "Набережные Челны" },
 ]
 
 export function Projects() {
@@ -68,7 +83,6 @@ export function Projects() {
               </div>
               <div className="flex items-center gap-6 sm:gap-10 pl-10 sm:pl-0 text-sm text-muted-foreground shrink-0">
                 <span>{project.location}</span>
-                <span className="text-muted-foreground/50">{project.year}</span>
               </div>
             </div>
           ))}
