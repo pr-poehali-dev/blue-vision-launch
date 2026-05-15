@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react"
 import { HighlightedText } from "./HighlightedText"
+import Icon from "@/components/ui/icon"
 
 export function CallToAction() {
   return (
@@ -32,6 +33,21 @@ export function CallToAction() {
             >
               Позвонить нам
             </a>
+          </div>
+
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8 border-t border-primary-foreground/10 pt-10">
+            <a href="tel:+79274654464" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Icon name="Phone" size={16} />
+              <span className="text-sm">+7 (927) 465-44-64</span>
+            </a>
+            <a href="mailto:specpromagregat-vent@yandex.ru" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+              <Icon name="Mail" size={16} />
+              <span className="text-sm">specpromagregat-vent@yandex.ru</span>
+            </a>
+            <div className="flex items-center gap-3 text-primary-foreground/80">
+              <Icon name="Clock" size={16} />
+              <span className="text-sm">Пн–Пт, 7:00–16:00 (обед 11:30–12:30)</span>
+            </div>
           </div>
         </div>
       </div>
