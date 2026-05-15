@@ -35,7 +35,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <a href="/" className="flex items-center gap-2 group" onClick={scrollToTop}>
             <div className="flex flex-col items-start gap-1">
-              <img src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/2c6689e0-a3ec-42e2-9346-c40fd6a581ed.png" alt="СпецПромАгрегат-Вент" className="w-auto h-10 drop-shadow-lg" />
+              <img src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/2c6689e0-a3ec-42e2-9346-c40fd6a581ed.png" alt="СпецПромАгрегат-Вент" className="w-auto h-10 drop-shadow-[0_0_6px_rgba(255,255,255,0.9),0_0_12px_rgba(255,255,255,0.5)]" />
               <span className="text-white font-semibold text-sm leading-tight tracking-wider drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">СпецПромАгрегат-Вент</span>
             </div>
           </a>
