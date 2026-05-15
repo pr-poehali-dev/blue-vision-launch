@@ -155,26 +155,26 @@ export function Hero() {
 
 
 
-      <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-black/30 backdrop-blur-sm">
-        <div className="container mx-auto px-6 md:px-12 py-4 flex flex-wrap items-center justify-center gap-6 md:gap-10">
-          <a href="tel:+79274654464" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
-            <Icon name="Phone" size={14} />
+      <div className="absolute bottom-0 left-0 right-0 z-20 bg-black/60 backdrop-blur-md border-t border-white/20">
+        <div className="container mx-auto px-6 md:px-12 py-5 flex flex-wrap items-center justify-center gap-4 md:gap-8">
+          <a href="tel:+79274654464" className="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-2 transition-all text-white text-sm font-medium rounded-sm">
+            <Icon name="Phone" size={15} className="text-orange-300" />
             +7 (927) 465-44-64
           </a>
-          <a href="mailto:specpromagregat-vent@yandex.ru" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
-            <Icon name="Mail" size={14} />
+          <a href="mailto:specpromagregat-vent@yandex.ru" className="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-2 transition-all text-white text-sm font-medium rounded-sm">
+            <Icon name="Mail" size={15} className="text-orange-300" />
             specpromagregat-vent@yandex.ru
           </a>
-          <a href="https://max.ru/89274654464" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
-            <Icon name="MessageCircle" size={14} />
-            Max
-          </a>
-          <a href="https://wa.me/79274654464" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
-            <Icon name="MessageCircle" size={14} />
+          <a href="https://wa.me/79274654464" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-2 transition-all text-white text-sm font-medium rounded-sm">
+            <Icon name="MessageCircle" size={15} className="text-green-400" />
             WhatsApp
           </a>
-          <div className="flex items-center gap-2 text-white/60 text-sm">
-            <Icon name="Clock" size={14} />
+          <a href="https://max.ru/89274654464" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-2 transition-all text-white text-sm font-medium rounded-sm">
+            <Icon name="MessageCircle" size={15} className="text-blue-300" />
+            Max
+          </a>
+          <div className="flex items-center gap-2.5 text-white/60 text-sm px-2">
+            <Icon name="Clock" size={15} />
             Пн–Пт, 7:00–16:00
           </div>
         </div>
