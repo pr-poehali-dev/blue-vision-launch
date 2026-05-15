@@ -26,6 +26,7 @@ const projects = [
   { id: 12, title: "Детская школа искусств", category: "administrative", location: "Мензелинск" },
   { id: 13, title: "Районный дворец культуры", category: "administrative", location: "Мензелинск" },
   { id: 14, title: "МБУ «РДК» Мензелинский муниципальный район", category: "administrative", location: "Мензелинск" },
+  { id: 28, title: "Бетьки-Нефте-Центр", category: "administrative", location: "село Бетьки" },
   { id: 15, title: "Детская поликлиника №4", category: "administrative", location: "Набережные Челны" },
   { id: 16, title: "Ликёро-водочный завод", category: "factory", location: "Набережные Челны" },
   { id: 17, title: "Лазерное производство, пр. Вахитова", category: "factory", location: "Набережные Челны" },
