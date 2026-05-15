@@ -165,6 +165,10 @@ export function Hero() {
             <Icon name="Mail" size={14} />
             specpromagregat-vent@yandex.ru
           </a>
+          <a href="https://max.ru/89274654464" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
+            <Icon name="MessageCircle" size={14} />
+            Max
+          </a>
           <div className="flex items-center gap-2 text-white/60 text-sm">
             <Icon name="Clock" size={14} />
             Пн–Пт, 7:00–16:00
