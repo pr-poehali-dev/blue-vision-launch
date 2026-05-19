@@ -308,6 +308,8 @@ export function Calculator() {
   const [capA, setCapA] = useState(""); const [capB, setCapB] = useState(""); const [capShape, setCapShape] = useState("rect")
   // Зонт
   const [hoodD, setHoodD] = useState(""); const [hoodH, setHoodH] = useState("200")
+  // Количество
+  const [qty, setQty] = useState("1")
 
   const round2 = (n: number) => Math.round(n * 100) / 100
 
@@ -406,7 +408,8 @@ export function Calculator() {
     }
 
     if (area > 0) {
-      setResult({ area, label, details })
+      const q = Math.max(1, parseInt(qty) || 1)
+      setResult({ area: round2(area * q), label, details: q > 1 ? `${details}, ${q} шт.` : details })
       setStep("calc")
     }
   }
@@ -423,6 +426,7 @@ export function Calculator() {
     setTeeA(""); setTeeB(""); setTeeC(""); setTeeD("")
     setCapA(""); setCapB(""); setCapShape("rect")
     setHoodD(""); setHoodH("200")
+    setQty("1")
     setName(""); setPhone(""); setFormError("")
   }
 
@@ -569,6 +573,11 @@ export function Calculator() {
                 <InputField label="Диаметр воздуховода D, мм" placeholder="400" value={hoodD} onChange={setHoodD} />
                 <InputField label="Высота зонта H, мм" placeholder="200" value={hoodH} onChange={setHoodH} />
               </>)}
+            </div>
+
+            {/* Количество */}
+            <div className="mb-6">
+              <InputField label="Количество, шт." placeholder="1" value={qty} onChange={setQty} />
             </div>
 
             {/* Кнопки */}
