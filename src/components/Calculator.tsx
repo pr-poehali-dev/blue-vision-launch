@@ -26,9 +26,12 @@ const TAB_IMAGES: Record<Tab, string> = {
   "transition-rc": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/7b829950-c8b7-4c3d-9489-5c1c129bd651.jpg",
   "transition-cc": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/e2fb7fe5-a7a0-48b3-ad0a-a2c7878e1c9c.jpg",
   "tee": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/75efdfaa-408f-409c-82be-25f9c8c2efd6.jpg",
-  "cap": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/82d44d1a-e07a-41ea-8c53-a0caee82f9d5.jpg",
+  "cap": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/c3d63562-93b4-44ed-9b42-0f3174e7c9c2.jpg",
   "hood": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/1949ba48-b522-4137-8998-c34a6e380a9b.jpg",
 }
+
+const CAP_IMAGE_ROUND = "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/fb61936f-ca89-490c-86fe-a44ed1a49f39.jpg"
+const CAP_IMAGE_RECT = "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/c3d63562-93b4-44ed-9b42-0f3174e7c9c2.jpg"
 
 const TAB_LABELS: Record<Tab, string> = {
   "rect": "Прямоугольный воздуховод",
@@ -491,8 +494,8 @@ export function Calculator() {
             <h3 className="text-xl font-medium mb-4">{TAB_LABELS[tab]}</h3>
             <div className="border border-border bg-background overflow-hidden relative">
               <img
-                key={tab}
-                src={TAB_IMAGES[tab]}
+                key={tab + capShape}
+                src={tab === "cap" ? (capShape === "round" ? CAP_IMAGE_ROUND : CAP_IMAGE_RECT) : TAB_IMAGES[tab]}
                 alt={TAB_LABELS[tab]}
                 className="w-full object-contain"
               />
