@@ -17,6 +17,32 @@ interface Result {
   details: string
 }
 
+const TAB_IMAGES: Record<Tab, string> = {
+  "rect": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/66b0c3b2-221e-45f8-a45e-8707afd5fac7.jpg",
+  "round": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/8c22b3b5-ff6c-43f4-815c-2d8deacf2b3f.jpg",
+  "elbow-rect": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/a522dbf8-4ea4-4b49-afe9-378233547aae.jpg",
+  "elbow-round": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/12d64ffb-2cb8-461e-b016-9e2bdbbbf5ae.jpg",
+  "transition-rr": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/1780a4bc-2586-4d79-9490-ae5e42bf3043.jpg",
+  "transition-rc": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/f9dc13cb-959c-4576-8a83-1a8cf812e3be.jpg",
+  "transition-cc": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/69b3e006-d57d-4b8a-bbd7-874f3582501a.jpg",
+  "tee": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/20814d51-a647-4971-af9a-42299a404660.jpg",
+  "cap": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/82d44d1a-e07a-41ea-8c53-a0caee82f9d5.jpg",
+  "hood": "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/1949ba48-b522-4137-8998-c34a6e380a9b.jpg",
+}
+
+const TAB_LABELS: Record<Tab, string> = {
+  "rect": "Прямоугольный воздуховод",
+  "round": "Круглый воздуховод",
+  "elbow-rect": "Отвод прямоугольный",
+  "elbow-round": "Отвод круглый",
+  "transition-rr": "Переход прямоуг. → прямоуг.",
+  "transition-rc": "Переход прямоуг. → круглый",
+  "transition-cc": "Переход круглый → круглый",
+  "tee": "Тройник",
+  "cap": "Заглушка",
+  "hood": "Зонт вытяжной",
+}
+
 const tabs: { id: Tab; label: string; group: string }[] = [
   { id: "rect", label: "Прямоугольный", group: "Воздуховоды" },
   { id: "round", label: "Круглый", group: "Воздуховоды" },
@@ -57,7 +83,7 @@ function SelectField({ label, value, onChange, options }: { label: string; value
   )
 }
 
-// SVG-схемы для каждого типа элемента
+ 
 function SchemaSVG({ tab }: { tab: Tab }) {
   const stroke = "currentColor"
   const dim = "#888"
@@ -420,30 +446,45 @@ export function Calculator() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* Левая колонка — поля и вкладки */}
-          <div>
-            {/* Группы вкладок */}
-            {groups.map((group) => (
-              <div key={group} className="mb-3">
-                <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2">{group}</p>
-                <div className="flex flex-wrap gap-2">
-                  {tabs.filter(t => t.group === group).map((t) => (
-                    <button key={t.id} onClick={() => handleTabChange(t.id)}
-                      className={`py-1.5 px-3 text-sm font-medium border transition-all duration-200 ${
-                        tab === t.id
-                          ? "bg-foreground text-primary-foreground border-foreground"
-                          : "bg-transparent text-foreground border-border hover:border-foreground"
-                      }`}>
-                      {t.label}
-                    </button>
-                  ))}
-                </div>
+        {/* Группы вкладок */}
+        <div className="flex flex-wrap gap-6 mb-8">
+          {groups.map((group) => (
+            <div key={group}>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2">{group}</p>
+              <div className="flex flex-wrap gap-2">
+                {tabs.filter(t => t.group === group).map((t) => (
+                  <button key={t.id} onClick={() => handleTabChange(t.id)}
+                    className={`py-1.5 px-3 text-sm font-medium border transition-all duration-200 ${
+                      tab === t.id
+                        ? "bg-foreground text-primary-foreground border-foreground"
+                        : "bg-transparent text-foreground border-border hover:border-foreground"
+                    }`}>
+                    {t.label}
+                  </button>
+                ))}
               </div>
-            ))}
+            </div>
+          ))}
+        </div>
 
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+          {/* Левая колонка — картинка */}
+          <div className="flex flex-col">
+            <h3 className="text-xl font-medium mb-4">{TAB_LABELS[tab]}</h3>
+            <div className="border border-border bg-background overflow-hidden">
+              <img
+                key={tab}
+                src={TAB_IMAGES[tab]}
+                alt={TAB_LABELS[tab]}
+                className="w-full object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Правая колонка — поля ввода */}
+          <div>
             {/* Поля ввода */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
               {tab === "rect" && (<>
                 <InputField label="Ширина A, мм" placeholder="400" value={rA} onChange={setRA} />
                 <InputField label="Высота B, мм" placeholder="200" value={rB} onChange={setRB} />
@@ -577,15 +618,7 @@ export function Calculator() {
             )}
           </div>
 
-          {/* Правая колонка — схема SVG */}
-          <div className="hidden lg:flex flex-col items-center justify-center sticky top-24">
-            <div className="w-full max-w-sm aspect-[4/3] border border-border/50 bg-background p-6 flex items-center justify-center">
-              <SchemaSVG tab={tab} />
-            </div>
-            <p className="text-xs text-muted-foreground mt-3 text-center">
-              {tabs.find(t => t.id === tab)?.label} — схема с обозначениями
-            </p>
-          </div>
+
         </div>
       </div>
     </section>
