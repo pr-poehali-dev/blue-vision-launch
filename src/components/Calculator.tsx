@@ -518,11 +518,11 @@ export function Calculator() {
               {tab === "rect" && (<>
                 <InputField label="Ширина A, мм" placeholder="400" value={rA} onChange={setRA} />
                 <InputField label="Высота B, мм" placeholder="200" value={rB} onChange={setRB} />
-                <InputField label="Длина, м" placeholder="10" value={rL} onChange={setRL} />
+                <InputField label="Длина L, м" placeholder="10" value={rL} onChange={setRL} />
               </>)}
               {tab === "round" && (<>
                 <InputField label="Диаметр D, мм" placeholder="315" value={cD} onChange={setCD} />
-                <InputField label="Длина, м" placeholder="10" value={cL} onChange={setCL} />
+                <InputField label="Длина L, м" placeholder="10" value={cL} onChange={setCL} />
               </>)}
               {tab === "elbow-rect" && (<>
                 <InputField label="Ширина A, мм" placeholder="400" value={eRA} onChange={setERA} />
@@ -539,18 +539,18 @@ export function Calculator() {
                 <InputField label="Высота B1, мм" placeholder="400" value={tRRB1} onChange={setTRRB1} />
                 <InputField label="Ширина A2, мм" placeholder="400" value={tRRA2} onChange={setTRRA2} />
                 <InputField label="Высота B2, мм" placeholder="200" value={tRRB2} onChange={setTRRB2} />
-                <InputField label="Длина перехода, мм" placeholder="300" value={tRRL} onChange={setTRRL} />
+                <InputField label="Длина L, мм" placeholder="300" value={tRRL} onChange={setTRRL} />
               </>)}
               {tab === "transition-rc" && (<>
                 <InputField label="Ширина A, мм" placeholder="400" value={tRCA} onChange={setTRCA} />
                 <InputField label="Высота B, мм" placeholder="300" value={tRCB} onChange={setTRCB} />
                 <InputField label="Диаметр D, мм" placeholder="315" value={tRCD} onChange={setTRCD} />
-                <InputField label="Длина перехода, мм" placeholder="300" value={tRCL} onChange={setTRCL} />
+                <InputField label="Длина L, мм" placeholder="300" value={tRCL} onChange={setTRCL} />
               </>)}
               {tab === "transition-cc" && (<>
                 <InputField label="Диаметр D1, мм" placeholder="500" value={tCCD1} onChange={setTCCD1} />
                 <InputField label="Диаметр D2, мм" placeholder="315" value={tCCD2} onChange={setTCCD2} />
-                <InputField label="Длина перехода, мм" placeholder="300" value={tCCL} onChange={setTCCL} />
+                <InputField label="Длина L, мм" placeholder="300" value={tCCL} onChange={setTCCL} />
               </>)}
               {tab === "tee" && (<>
                 <InputField label="Ширина магистрали A, мм" placeholder="600" value={teeA} onChange={setTeeA} />
