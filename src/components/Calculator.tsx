@@ -43,6 +43,20 @@ const TAB_LABELS: Record<Tab, string> = {
   "hood": "Зонт вытяжной",
 }
 
+// Позиции подписей на картинке (в % от ширины/высоты)
+const TAB_BADGES: Record<Tab, { label: string; x: number; y: number }[]> = {
+  "rect":          [{ label: "A", x: 18, y: 50 }, { label: "B", x: 50, y: 82 }, { label: "L", x: 80, y: 30 }],
+  "round":         [{ label: "D", x: 20, y: 50 }, { label: "L", x: 72, y: 25 }],
+  "elbow-rect":    [{ label: "A", x: 22, y: 22 }, { label: "B", x: 75, y: 50 }, { label: "R", x: 42, y: 68 }],
+  "elbow-round":   [{ label: "D", x: 22, y: 30 }, { label: "R", x: 45, y: 70 }],
+  "transition-rr": [{ label: "A1×B1", x: 12, y: 50 }, { label: "A2×B2", x: 78, y: 50 }, { label: "L", x: 50, y: 82 }],
+  "transition-rc": [{ label: "A×B", x: 12, y: 50 }, { label: "D", x: 82, y: 50 }, { label: "L", x: 50, y: 82 }],
+  "transition-cc": [{ label: "D1", x: 14, y: 40 }, { label: "D2", x: 80, y: 45 }, { label: "L", x: 50, y: 82 }],
+  "tee":           [{ label: "A×B", x: 50, y: 72 }, { label: "C×D", x: 72, y: 22 }],
+  "cap":           [{ label: "A", x: 38, y: 22 }, { label: "B", x: 18, y: 52 }],
+  "hood":          [{ label: "D", x: 50, y: 82 }, { label: "H", x: 18, y: 50 }],
+}
+
 const tabs: { id: Tab; label: string; group: string }[] = [
   { id: "rect", label: "Прямоугольный", group: "Воздуховоды" },
   { id: "round", label: "Круглый", group: "Воздуховоды" },
@@ -468,17 +482,29 @@ export function Calculator() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* Левая колонка — картинка */}
+          {/* Левая колонка — картинка с подписями */}
           <div className="flex flex-col">
             <h3 className="text-xl font-medium mb-4">{TAB_LABELS[tab]}</h3>
-            <div className="border border-border bg-background overflow-hidden">
+            <div className="border border-border bg-background overflow-hidden relative">
               <img
                 key={tab}
                 src={TAB_IMAGES[tab]}
                 alt={TAB_LABELS[tab]}
                 className="w-full object-contain"
               />
+              {TAB_BADGES[tab].map((badge) => (
+                <div
+                  key={badge.label}
+                  className="absolute flex items-center justify-center"
+                  style={{ left: `${badge.x}%`, top: `${badge.y}%`, transform: "translate(-50%, -50%)" }}
+                >
+                  <span className="bg-foreground text-primary-foreground text-xs font-bold px-2 py-0.5 rounded shadow-lg leading-tight">
+                    {badge.label}
+                  </span>
+                </div>
+              ))}
             </div>
+            <p className="text-xs text-muted-foreground mt-2">Обозначения соответствуют полям ввода</p>
           </div>
 
           {/* Правая колонка — поля ввода */}
