@@ -27,24 +27,24 @@ export function Header() {
       className={cn(
         "fixed z-50 transition-all duration-500 my-0 py-0 rounded-none",
         scrolled || mobileMenuOpen
-          ? "bg-primary backdrop-blur-md py-4 top-4 left-4 right-4 rounded-2xl"
-          : "bg-transparent py-4 top-0 left-0 right-0",
+          ? "bg-primary backdrop-blur-md py-3 top-4 left-4 right-4 rounded-2xl"
+          : "bg-black/40 backdrop-blur-sm py-3 top-0 left-0 right-0 border-b border-white/10",
       )}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between md:px-[24]">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 shrink-0">
           <a href="/" className="flex items-center gap-2 group" onClick={scrollToTop}>
-            <div className="flex flex-col items-start gap-1">
-              <img src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/2c6689e0-a3ec-42e2-9346-c40fd6a581ed.png" alt="СпецПромАгрегат-Вент" className="w-auto h-10 drop-shadow-[0_0_6px_rgba(255,255,255,0.9),0_0_12px_rgba(255,255,255,0.5)]" />
-              <span className="text-white font-semibold text-sm leading-tight tracking-wider drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">СпецПромАгрегат-Вент</span>
+            <div className="flex flex-col items-start gap-0.5">
+              <img src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/2c6689e0-a3ec-42e2-9346-c40fd6a581ed.png" alt="СпецПромАгрегат-Вент" className="w-auto h-8 drop-shadow-[0_0_6px_rgba(255,255,255,0.9),0_0_12px_rgba(255,255,255,0.5)]" />
+              <span className="text-white font-semibold text-xs leading-tight tracking-wider drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">СпецПромАгрегат-Вент</span>
             </div>
           </a>
-          <span className="hidden lg:inline-flex items-center gap-1.5 bg-orange-500/20 border border-orange-400/40 text-orange-200 text-xs px-2.5 py-1 rounded-full">
+          <span className="hidden xl:inline-flex items-center gap-1.5 bg-orange-500/20 border border-orange-400/40 text-orange-200 text-xs px-2.5 py-1 rounded-full">
             🛡️ Лицензия МЧС
           </span>
         </div>
 
-        <ul className="hidden md:flex items-center gap-10 text-sm tracking-wide">
+        <ul className="hidden lg:flex items-center gap-1 text-sm">
           {[
             { label: "Главная", href: "#hero" },
             { label: "Производство", href: "#about" },
@@ -59,7 +59,7 @@ export function Header() {
             <li key={item.label}>
               <a
                 href={item.href}
-                className="hover:text-[rgb(251,146,60)] transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 hover:after:w-full after:bg-[rgb(251,146,60)] after:transition-all after:duration-300 text-white"
+                className="block px-3 py-1.5 rounded text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 whitespace-nowrap font-medium tracking-wide"
               >
                 {item.label}
               </a>
@@ -69,12 +69,7 @@ export function Header() {
 
         <a
           href="#contact"
-          className={cn(
-            "hidden md:inline-flex items-center gap-2 text-sm px-5 py-2.5 transition-all duration-300",
-            scrolled
-              ? "bg-white text-foreground border border-foreground/20 hover:bg-foreground hover:text-white"
-              : "bg-white text-foreground border border-foreground/20 hover:bg-foreground hover:text-white",
-          )}
+          className="hidden lg:inline-flex items-center gap-2 text-sm px-4 py-2 transition-all duration-300 bg-orange-500 hover:bg-orange-600 text-white font-medium shrink-0"
         >
           Связаться
         </a>
