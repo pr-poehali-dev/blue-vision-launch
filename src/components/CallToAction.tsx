@@ -29,6 +29,7 @@ export function CallToAction() {
             </a>
             <a
               href="tel:+79274654464"
+              onClick={() => (window as unknown as { ym?: (id: number, action: string, goal: string) => void }).ym?.(109675857, "reachGoal", "phone_click")}
               className="inline-flex items-center justify-center gap-2 border border-primary-foreground/30 px-8 py-4 text-sm tracking-wide hover:bg-primary-foreground/10 transition-colors duration-300"
             >
               Позвонить нам
@@ -36,7 +37,7 @@ export function CallToAction() {
           </div>
 
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8 border-t border-primary-foreground/10 pt-10">
-            <a href="tel:+79274654464" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+            <a href="tel:+79274654464" onClick={() => (window as unknown as { ym?: (id: number, action: string, goal: string) => void }).ym?.(109675857, "reachGoal", "phone_click")} className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
               <Icon name="Phone" size={16} />
               <span className="text-sm">+7 (927) 465-44-64</span>
             </a>
