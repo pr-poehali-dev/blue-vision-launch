@@ -50,6 +50,7 @@ export function Header() {
             { label: "Производство", href: "#about" },
             { label: "Проекты", href: "#projects" },
             { label: "Продукция", href: "#services" },
+            { label: "Кондиционеры", href: "#conditioners" },
             { label: "Калькулятор", href: "#calculator" },
             { label: "Вопросы", href: "#faq" },
           ].map((item) => (
@@ -108,6 +109,7 @@ export function Header() {
               { label: "Производство", href: "#about" },
               { label: "Проекты", href: "#projects" },
               { label: "Продукция", href: "#services" },
+              { label: "Кондиционеры", href: "#conditioners" },
               { label: "Калькулятор", href: "#calculator" },
               { label: "Вопросы", href: "#faq" },
             ].map((item) => (
