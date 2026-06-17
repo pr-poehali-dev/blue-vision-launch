@@ -88,8 +88,6 @@ export function AirConditioners() {
           <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Поставка оборудования</p>
           <h2 className="text-5xl font-medium leading-[1.15] tracking-tight mb-6 text-balance lg:text-7xl">
             <HighlightedText>Кондиционеры</HighlightedText>
-            <br />
-            и вентоборудование
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
             Подбираем и поставляем кондиционеры ведущих брендов для жилых, коммерческих и промышленных объектов. Выберите подходящую мощность — рассчитаем стоимость и подберём модель.
