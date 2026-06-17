@@ -18,13 +18,13 @@ export default function Index() {
       <Hero />
       <Calculator />
       <Philosophy />
-      <Projects />
       <Expertise />
+      <Projects />
+      <FAQ />
+      <CallToAction />
       <AirConditioners />
       <VentEquipment />
       <VentParts />
-      <FAQ />
-      <CallToAction />
       <Footer />
     </main>
   )
