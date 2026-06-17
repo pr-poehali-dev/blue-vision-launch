@@ -29,6 +29,9 @@ export function CalculatorResult({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, phone, duct_type: result?.label, dimensions: result?.details, area: result?.area }),
       })
+      if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).ym) {
+        (window as unknown as { ym: (id: number, action: string, goal: string) => void }).ym(109675857, "reachGoal", "send_request")
+      }
       setStep("done")
     } catch {
       setFormError("Ошибка отправки. Позвоните нам: 8-927-465-44-64")
