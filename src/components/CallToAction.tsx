@@ -22,6 +22,7 @@ export function CallToAction() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:specpromagregat-vent@yandex.ru"
+              onClick={() => (window as unknown as { ym?: (id: number, action: string, goal: string) => void }).ym?.(109675857, "reachGoal", "email_click")}
               className="inline-flex items-center justify-center gap-3 bg-primary-foreground text-foreground px-8 py-4 text-sm tracking-wide hover:bg-primary-foreground/90 transition-colors duration-300 group"
             >
               Отправить запрос
@@ -41,7 +42,7 @@ export function CallToAction() {
               <Icon name="Phone" size={16} />
               <span className="text-sm">+7 (927) 465-44-64</span>
             </a>
-            <a href="mailto:specpromagregat-vent@yandex.ru" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+            <a href="mailto:specpromagregat-vent@yandex.ru" onClick={() => (window as unknown as { ym?: (id: number, action: string, goal: string) => void }).ym?.(109675857, "reachGoal", "email_click")} className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
               <Icon name="Mail" size={16} />
               <span className="text-sm">specpromagregat-vent@yandex.ru</span>
             </a>
