@@ -51,6 +51,7 @@ export function Header() {
             { label: "Проекты", href: "#projects" },
             { label: "Продукция", href: "#services" },
             { label: "Кондиционеры", href: "#conditioners" },
+            { label: "Комплектующие", href: "#vent-parts" },
             { label: "Калькулятор", href: "#calculator" },
             { label: "Вопросы", href: "#faq" },
           ].map((item) => (
@@ -110,6 +111,7 @@ export function Header() {
               { label: "Проекты", href: "#projects" },
               { label: "Продукция", href: "#services" },
               { label: "Кондиционеры", href: "#conditioners" },
+              { label: "Комплектующие", href: "#vent-parts" },
               { label: "Калькулятор", href: "#calculator" },
               { label: "Вопросы", href: "#faq" },
             ].map((item) => (
