@@ -132,7 +132,8 @@ export function Hero() {
         className="container mx-auto px-6 md:px-12 relative z-10 pb-0 pl-1 pr-1 pt-24 md:pt-20"
       >
         <div className="mb-72 md:mb-60 lg:mb-80">
-          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-2 drop-shadow-lg">{"Производство воздуховодов · продажа кондиционеров · продажа комплектующих · работаем с 2016 года"}</p>
+          <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-2 drop-shadow-lg">{"Производство воздуховодов · продажа кондиционеров · продажа комплектующих"}</p>
+          <p className="text-sm tracking-[0.2em] uppercase text-center text-orange-300 mb-4 drop-shadow-lg font-semibold">{"★ работаем с 2016 года ★"}</p>
 
           <h1
             ref={titleRef}
