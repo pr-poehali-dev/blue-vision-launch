@@ -25,7 +25,7 @@ export function PromoBanner() {
   if (!visible || !promo || !promo.is_active) return null;
 
   return (
-    <div className="relative bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-white z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 text-white z-40">
       <div className="container mx-auto px-4 py-2 flex items-center justify-center gap-4">
         <div className="flex items-center gap-3">
           {promo.image_url && (
