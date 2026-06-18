@@ -126,11 +126,26 @@ export function Header() {
 
           <a
             href="#contact"
-            className="inline-flex items-center justify-center gap-2 text-sm px-5 py-2.5 bg-white text-foreground border border-foreground/20 hover:bg-foreground hover:text-white transition-all duration-300 mb-4"
+            className="inline-flex items-center justify-center gap-2 text-sm px-5 py-2.5 bg-white text-foreground border border-foreground/20 hover:bg-foreground hover:text-white transition-all duration-300 mb-6"
             onClick={closeMobileMenu}
           >
             Связаться
           </a>
+
+          <div className="border-t border-white/20 pt-6 pb-8 flex flex-col gap-3">
+            <a href="tel:+79274654464" className="flex items-center gap-3 text-white/80 hover:text-orange-400 transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+              <span className="text-lg">+7 (927) 465-44-64</span>
+            </a>
+            <a href="mailto:specpromagregat-vent@yandex.ru" className="flex items-center gap-3 text-white/80 hover:text-orange-400 transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <span className="text-base">specpromagregat-vent@yandex.ru</span>
+            </a>
+            <p className="flex items-center gap-3 text-white/50">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span className="text-base">Пн–Пт, 7:00–16:00</span>
+            </p>
+          </div>
         </div>
       </div>
     </header>
