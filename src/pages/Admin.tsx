@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 
 const PROMO_URL = "https://functions.poehali.dev/d9308bdb-86ba-4cd8-8802-c08ced05307f";
+const ADMIN_PASSWORD = "Dom_270813";
 
 interface Promo {
   title: string;
@@ -12,6 +13,10 @@ interface Promo {
 }
 
 export default function Admin() {
+  const [auth, setAuth] = useState(false);
+  const [pwInput, setPwInput] = useState("");
+  const [pwError, setPwError] = useState(false);
+
   const [promo, setPromo] = useState<Promo>({
     title: "",
     price: "",
@@ -24,6 +29,7 @@ export default function Admin() {
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
+    if (!auth) return;
     fetch(PROMO_URL)
       .then((r) => r.json())
       .then((data) => {
@@ -31,7 +37,16 @@ export default function Admin() {
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, []);
+  }, [auth]);
+
+  const handleLogin = () => {
+    if (pwInput === ADMIN_PASSWORD) {
+      setAuth(true);
+      setPwError(false);
+    } else {
+      setPwError(true);
+    }
+  };
 
   const handleSave = async () => {
     setSaving(true);
@@ -44,6 +59,36 @@ export default function Admin() {
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
   };
+
+  if (!auth) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+        <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-sm">
+          <div className="flex items-center gap-3 mb-6">
+            <Icon name="Lock" size={22} className="text-orange-500" />
+            <h1 className="text-xl font-bold text-gray-900">Вход в админку</h1>
+          </div>
+          <input
+            type="password"
+            value={pwInput}
+            onChange={(e) => { setPwInput(e.target.value); setPwError(false); }}
+            onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+            placeholder="Введите пароль"
+            className={`w-full border rounded-lg px-4 py-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 mb-3 ${pwError ? "border-red-400" : "border-gray-300"}`}
+          />
+          {pwError && (
+            <p className="text-red-500 text-sm mb-3">Неверный пароль</p>
+          )}
+          <button
+            onClick={handleLogin}
+            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2.5 rounded-xl transition-colors"
+          >
+            Войти
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
