@@ -16,12 +16,13 @@ def get_conn():
 
 
 def handler(event: dict, context) -> dict:
-    """Получение баннера, сохранение баннера, статистика заявок."""
+    """Баннер, статистика и список всех заявок с фильтрацией."""
     if event.get('httpMethod') == 'OPTIONS':
         return {'statusCode': 200, 'headers': CORS, 'body': ''}
 
     method = event.get('httpMethod', 'GET')
     path = event.get('path', '/')
+    params = event.get('queryStringParameters') or {}
 
     if method == 'GET' and path == '/stats':
         conn = get_conn()
@@ -58,6 +59,43 @@ def handler(event: dict, context) -> dict:
             })
         }
 
+    if method == 'GET' and path == '/requests':
+        duct_filter = params.get('type', '')
+        conn = get_conn()
+        cur = conn.cursor()
+        if duct_filter:
+            cur.execute(f"""
+                SELECT id, name, phone, duct_type, dimensions, area, created_at AT TIME ZONE 'Europe/Moscow'
+                FROM {SCHEMA}.requests
+                WHERE duct_type ILIKE %s
+                ORDER BY created_at DESC
+            """, (f'%{duct_filter}%',))
+        else:
+            cur.execute(f"""
+                SELECT id, name, phone, duct_type, dimensions, area, created_at AT TIME ZONE 'Europe/Moscow'
+                FROM {SCHEMA}.requests
+                ORDER BY created_at DESC
+            """)
+        rows = cur.fetchall()
+        cur.execute(f"SELECT DISTINCT duct_type FROM {SCHEMA}.requests WHERE duct_type != '' ORDER BY duct_type")
+        types = [r[0] for r in cur.fetchall()]
+        conn.close()
+        return {
+            'statusCode': 200,
+            'headers': {**CORS, 'Content-Type': 'application/json'},
+            'body': json.dumps({
+                'requests': [
+                    {
+                        'id': r[0], 'name': r[1], 'phone': r[2],
+                        'type': r[3], 'dimensions': r[4], 'area': r[5],
+                        'date': r[6].strftime('%d.%m.%Y %H:%M')
+                    }
+                    for r in rows
+                ],
+                'types': types
+            })
+        }
+
     if method == 'GET':
         conn = get_conn()
         cur = conn.cursor()
@@ -70,34 +108,21 @@ def handler(event: dict, context) -> dict:
             'statusCode': 200,
             'headers': {**CORS, 'Content-Type': 'application/json'},
             'body': json.dumps({
-                'title': row[0],
-                'price': row[1],
-                'old_price': row[2],
-                'image_url': row[3],
-                'is_active': row[4],
+                'title': row[0], 'price': row[1], 'old_price': row[2],
+                'image_url': row[3], 'is_active': row[4],
             })
         }
 
     if method == 'POST':
         body = json.loads(event.get('body') or '{}')
-        title = body.get('title', '')
-        price = body.get('price', '')
-        old_price = body.get('old_price', '')
-        image_url = body.get('image_url', '')
-        is_active = body.get('is_active', True)
-
         conn = get_conn()
         cur = conn.cursor()
         cur.execute(
             f'UPDATE {SCHEMA}.promo_banner SET title=%s, price=%s, old_price=%s, image_url=%s, is_active=%s, updated_at=NOW() WHERE id=(SELECT id FROM {SCHEMA}.promo_banner ORDER BY id DESC LIMIT 1)',
-            (title, price, old_price, image_url, is_active)
+            (body.get('title', ''), body.get('price', ''), body.get('old_price', ''), body.get('image_url', ''), body.get('is_active', True))
         )
         conn.commit()
         conn.close()
-        return {
-            'statusCode': 200,
-            'headers': {**CORS, 'Content-Type': 'application/json'},
-            'body': json.dumps({'ok': True})
-        }
+        return {'statusCode': 200, 'headers': {**CORS, 'Content-Type': 'application/json'}, 'body': json.dumps({'ok': True})}
 
     return {'statusCode': 405, 'headers': CORS, 'body': json.dumps({'error': 'method not allowed'})}
