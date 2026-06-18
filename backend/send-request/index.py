@@ -1,6 +1,7 @@
 import json
 import os
 import smtplib  # noqa
+from datetime import datetime, timezone, timedelta
 
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -38,19 +39,23 @@ def handler(event: dict, context) -> dict:
     smtp_user = 'specpromagregat-vent@yandex.ru'
     smtp_password = os.environ['SMTP_PASSWORD']
 
+    msk = timezone(timedelta(hours=3))
+    now = datetime.now(msk).strftime('%d.%m.%Y %H:%M МСК')
+
     msg = MIMEMultipart()
     msg['From'] = smtp_user
     msg['To'] = smtp_user
-    msg['Subject'] = f'Новая заявка с калькулятора — {name}'
+    msg['Subject'] = f'Новая заявка — {name} ({now})'
 
     html = f"""
-    <h2>Новая заявка с калькулятора воздуховодов</h2>
+    <h2>Новая заявка с сайта</h2>
     <table style="border-collapse:collapse;width:100%">
+      <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Дата и время</b></td><td style="padding:8px;border:1px solid #ddd">{now}</td></tr>
       <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Имя</b></td><td style="padding:8px;border:1px solid #ddd">{name}</td></tr>
       <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Телефон</b></td><td style="padding:8px;border:1px solid #ddd">{phone}</td></tr>
-      <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Тип воздуховода</b></td><td style="padding:8px;border:1px solid #ddd">{duct_type}</td></tr>
-      <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Размеры</b></td><td style="padding:8px;border:1px solid #ddd">{dimensions}</td></tr>
-      <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Площадь поверхности</b></td><td style="padding:8px;border:1px solid #ddd">{area} м²</td></tr>
+      <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Тип заявки</b></td><td style="padding:8px;border:1px solid #ddd">{duct_type}</td></tr>
+      <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Описание</b></td><td style="padding:8px;border:1px solid #ddd">{dimensions}</td></tr>
+      {'<tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Площадь</b></td><td style="padding:8px;border:1px solid #ddd">' + area + ' м²</td></tr>' if area else ''}
     </table>
     """
 
