@@ -1,3 +1,4 @@
+import { PromoBanner } from "../components/PromoBanner"
 import { Header } from "../components/Header"
 import { Hero } from "../components/Hero"
 import { Philosophy } from "../components/Philosophy"
@@ -14,6 +15,7 @@ import { Footer } from "../components/Footer"
 export default function Index() {
   return (
     <main className="min-h-screen">
+      <PromoBanner />
       <Header />
       <Hero />
       <Calculator />
