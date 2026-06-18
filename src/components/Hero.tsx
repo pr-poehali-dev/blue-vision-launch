@@ -129,7 +129,7 @@ export function Hero() {
       </div>
 
       <div
-        className="container mx-auto px-6 md:px-12 lg:pt-0 relative z-10 pb-0 pl-1 pr-1 pt-8 md:pt-0"
+        className="container mx-auto px-6 md:px-12 relative z-10 pb-0 pl-1 pr-1 pt-24 md:pt-20"
       >
         <div className="mb-72 md:mb-60 lg:mb-80">
           <p className="text-sm tracking-[0.3em] uppercase text-center text-secondary mb-2 drop-shadow-lg">{"Производство воздуховодов · работаем с 2016 года"}</p>
