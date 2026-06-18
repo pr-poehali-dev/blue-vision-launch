@@ -16,11 +16,47 @@ def get_conn():
 
 
 def handler(event: dict, context) -> dict:
-    """Получение и сохранение данных рекламного баннера."""
+    """Получение баннера, сохранение баннера, статистика заявок."""
     if event.get('httpMethod') == 'OPTIONS':
         return {'statusCode': 200, 'headers': CORS, 'body': ''}
 
     method = event.get('httpMethod', 'GET')
+    path = event.get('path', '/')
+
+    if method == 'GET' and path == '/stats':
+        conn = get_conn()
+        cur = conn.cursor()
+        cur.execute(f"""
+            SELECT
+                COUNT(*) FILTER (WHERE created_at >= NOW() - INTERVAL '1 day') AS today,
+                COUNT(*) FILTER (WHERE created_at >= NOW() - INTERVAL '7 days') AS week,
+                COUNT(*) FILTER (WHERE created_at >= NOW() - INTERVAL '30 days') AS month,
+                COUNT(*) AS total
+            FROM {SCHEMA}.requests
+        """)
+        row = cur.fetchone()
+        cur.execute(f"""
+            SELECT name, phone, duct_type, created_at AT TIME ZONE 'Europe/Moscow'
+            FROM {SCHEMA}.requests
+            ORDER BY created_at DESC
+            LIMIT 10
+        """)
+        recent = cur.fetchall()
+        conn.close()
+        return {
+            'statusCode': 200,
+            'headers': {**CORS, 'Content-Type': 'application/json'},
+            'body': json.dumps({
+                'today': row[0],
+                'week': row[1],
+                'month': row[2],
+                'total': row[3],
+                'recent': [
+                    {'name': r[0], 'phone': r[1], 'type': r[2], 'date': r[3].strftime('%d.%m %H:%M')}
+                    for r in recent
+                ]
+            })
+        }
 
     if method == 'GET':
         conn = get_conn()

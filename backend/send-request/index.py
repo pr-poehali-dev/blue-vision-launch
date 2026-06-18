@@ -1,14 +1,17 @@
 import json
 import os
 import smtplib  # noqa
+import psycopg2
 from datetime import datetime, timezone, timedelta
 
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+SCHEMA = os.environ.get('MAIN_DB_SCHEMA', 't_p30360196_blue_vision_launch')
+
 
 def handler(event: dict, context) -> dict:
-    """Отправка заявки с калькулятора на почту предприятия"""
+    """Отправка заявки с сайта на почту и сохранение в БД"""
 
     if event.get('httpMethod') == 'OPTIONS':
         return {
@@ -36,6 +39,17 @@ def handler(event: dict, context) -> dict:
             'body': json.dumps({'error': 'Имя и телефон обязательны'})
         }
 
+    # Сохраняем заявку в БД
+    conn = psycopg2.connect(os.environ['DATABASE_URL'])
+    cur = conn.cursor()
+    cur.execute(
+        f'INSERT INTO {SCHEMA}.requests (name, phone, duct_type, dimensions, area) VALUES (%s, %s, %s, %s, %s)',
+        (name, phone, duct_type, dimensions, area)
+    )
+    conn.commit()
+    conn.close()
+
+    # Отправляем письмо
     smtp_user = 'specpromagregat-vent@yandex.ru'
     smtp_password = os.environ['SMTP_PASSWORD']
 
