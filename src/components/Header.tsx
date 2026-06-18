@@ -44,14 +44,14 @@ export function Header() {
           </span>
         </div>
 
-        <ul className="hidden lg:flex items-center gap-1 text-sm">
+        <ul className="hidden xl:flex items-center gap-0.5 text-sm">
           {[
             { label: "Главная", href: "#hero" },
             { label: "Производство", href: "#about" },
             { label: "Проекты", href: "#projects" },
             { label: "Продукция", href: "#services" },
             { label: "Кондиционеры", href: "#conditioners" },
-            { label: "Вентоборудование", href: "#vent-equipment" },
+            { label: "Вентооборудование", href: "#vent-equipment" },
             { label: "Комплектующие", href: "#vent-parts" },
             { label: "Калькулятор", href: "#calculator" },
             { label: "Вопросы", href: "#faq" },
@@ -59,7 +59,7 @@ export function Header() {
             <li key={item.label}>
               <a
                 href={item.href}
-                className="block px-3 py-1.5 rounded text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 whitespace-nowrap font-medium tracking-wide"
+                className="block px-2 py-1.5 rounded text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 whitespace-nowrap font-medium tracking-wide"
               >
                 {item.label}
               </a>
@@ -69,13 +69,13 @@ export function Header() {
 
         <a
           href="#contact"
-          className="hidden lg:inline-flex items-center gap-2 text-sm px-4 py-2 transition-all duration-300 bg-orange-500 hover:bg-orange-600 text-white font-medium shrink-0"
+          className="hidden xl:inline-flex items-center gap-2 text-sm px-4 py-2 transition-all duration-300 bg-orange-500 hover:bg-orange-600 text-white font-medium shrink-0"
         >
           Связаться
         </a>
 
         <button
-          className="md:hidden z-50 transition-colors duration-300 text-white"
+          className="xl:hidden z-50 transition-colors duration-300 text-white"
           aria-label={mobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -95,7 +95,7 @@ export function Header() {
 
       <div
         className={cn(
-          "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+          "xl:hidden overflow-hidden transition-all duration-300 ease-in-out",
           mobileMenuOpen ? "max-h-[600px] opacity-100 mt-8" : "max-h-0 opacity-0",
         )}
       >
