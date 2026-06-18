@@ -94,12 +94,12 @@ export function AirConditioners() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
           {models.map((model, index) => (
             <button
               key={index}
               onClick={() => handleSelect(index)}
-              className={`text-left p-6 border transition-all duration-200 group ${
+              className={`text-left p-4 sm:p-6 border transition-all duration-200 group active:scale-95 ${
                 selected === index
                   ? "border-foreground bg-foreground text-primary-foreground"
                   : "border-border bg-background hover:border-foreground"
