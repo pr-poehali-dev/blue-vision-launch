@@ -96,11 +96,11 @@ export function Header() {
       <div
         className={cn(
           "xl:hidden overflow-hidden transition-all duration-300 ease-in-out",
-          mobileMenuOpen ? "max-h-[600px] opacity-100 mt-8" : "max-h-0 opacity-0",
+          mobileMenuOpen ? "max-h-screen opacity-100 mt-4" : "max-h-0 opacity-0",
         )}
       >
         <div className="container mx-auto px-6">
-          <ul className="flex flex-col gap-6 mb-8">
+          <ul className="flex flex-col gap-3 mb-6">
             {[
               { label: "Главная", href: "#hero" },
               { label: "Производство", href: "#about" },
@@ -115,7 +115,7 @@ export function Header() {
               <li key={item.label}>
                 <a
                   href={item.href}
-                  className="hover:text-[rgb(251,146,60)] transition-colors duration-300 text-white text-4xl font-light block"
+                  className="hover:text-[rgb(251,146,60)] transition-colors duration-300 text-white text-2xl font-light block"
                   onClick={closeMobileMenu}
                 >
                   {item.label}
