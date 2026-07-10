@@ -309,6 +309,57 @@ export default function LaserCutting() {
         </div>
       </section>
 
+      {/* Отрасли применения */}
+      <section className="py-24 md:py-32 bg-secondary/50">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-3xl mb-12">
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Кому подходит</p>
+            <h2 className="text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-balance">
+              Детали для <HighlightedText>разных задач</HighlightedText>
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mt-6">
+              Изготавливаем детали и конструкции под требования конкретной отрасли — с учётом нагрузок, среды эксплуатации и сроков монтажа.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/fa3fb977-bcbe-4f03-a1d4-d414947e72b2.jpg",
+                title: "Строительство",
+                text: "Фермы, косынки, закладные и пластины для ангаров и быстровозводимых конструкций.",
+              },
+              {
+                src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/8285a866-1f78-4587-92bb-1e17c9013673.jpg",
+                title: "Машиностроение",
+                text: "Кронштейны, опоры и заготовки для промышленного оборудования и станков.",
+              },
+              {
+                src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/5cd9df67-97fd-4983-a372-87a3a99d2334.jpg",
+                title: "Вентиляция и HVAC",
+                text: "Кронштейны и крепёж для монтажа воздуховодов и вентиляционных систем.",
+              },
+              {
+                src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/70230484-a45d-41ba-9f2a-d5642b0a44dc.jpg",
+                title: "Декор и благоустройство",
+                text: "Ворота, ограждения, перила и другие изделия с фигурным раскроем.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="group relative overflow-hidden bg-background border border-border flex flex-col sm:flex-row">
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="w-full sm:w-40 h-40 object-cover shrink-0 transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="p-6">
+                  <h3 className="text-lg font-medium mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Преимущества */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12">
