@@ -42,8 +42,8 @@ const advantages = [
 const materials = [
   { name: "Чёрная сталь", range: "0,5 – 16 мм" },
   { name: "Оцинкованная сталь", range: "0,5 – 3 мм" },
-  { name: "Нержавеющая сталь", range: "0,5 – 12 мм" },
-  { name: "Алюминий", range: "0,5 – 10 мм" },
+  { name: "Нержавеющая сталь", range: "0,5 – 6 мм" },
+  { name: "Алюминий", range: "0,5 – 6 мм" },
 ]
 
 const faqs = [
