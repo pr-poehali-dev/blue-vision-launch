@@ -1,7 +1,10 @@
+import base64
 import json
 import os
 import smtplib  # noqa
+import uuid
 import psycopg2
+import boto3
 from datetime import datetime, timezone, timedelta
 
 from email.mime.text import MIMEText
@@ -31,6 +34,8 @@ def handler(event: dict, context) -> dict:
     duct_type = body.get('duct_type', '')
     dimensions = body.get('dimensions', '')
     area = body.get('area', '')
+    file_data = body.get('file_data', '')
+    file_name = body.get('file_name', '')
 
     if not name or not phone:
         return {
@@ -39,12 +44,25 @@ def handler(event: dict, context) -> dict:
             'body': json.dumps({'error': 'Имя и телефон обязательны'})
         }
 
+    file_url = ''
+    if file_data and file_name:
+        s3 = boto3.client(
+            's3',
+            endpoint_url='https://bucket.poehali.dev',
+            aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
+            aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY']
+        )
+        ext = file_name.rsplit('.', 1)[-1] if '.' in file_name else 'bin'
+        key = f'drawings/{uuid.uuid4()}.{ext}'
+        s3.put_object(Bucket='files', Key=key, Body=base64.b64decode(file_data))
+        file_url = f"https://cdn.poehali.dev/projects/{os.environ['AWS_ACCESS_KEY_ID']}/bucket/{key}"
+
     # Сохраняем заявку в БД
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
     cur = conn.cursor()
     cur.execute(
-        f'INSERT INTO {SCHEMA}.requests (name, phone, duct_type, dimensions, area) VALUES (%s, %s, %s, %s, %s)',
-        (name, phone, duct_type, dimensions, area)
+        f'INSERT INTO {SCHEMA}.requests (name, phone, duct_type, dimensions, area, file_url) VALUES (%s, %s, %s, %s, %s, %s)',
+        (name, phone, duct_type, dimensions, area, file_url)
     )
     conn.commit()
     conn.close()
@@ -70,6 +88,7 @@ def handler(event: dict, context) -> dict:
       <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Тип заявки</b></td><td style="padding:8px;border:1px solid #ddd">{duct_type}</td></tr>
       <tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Описание</b></td><td style="padding:8px;border:1px solid #ddd">{dimensions}</td></tr>
       {'<tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Площадь</b></td><td style="padding:8px;border:1px solid #ddd">' + area + ' м²</td></tr>' if area else ''}
+      {'<tr><td style="padding:8px;border:1px solid #ddd;background:#f9f9f9"><b>Чертёж</b></td><td style="padding:8px;border:1px solid #ddd"><a href="' + file_url + '">Скачать файл</a></td></tr>' if file_url else ''}
     </table>
     """
 

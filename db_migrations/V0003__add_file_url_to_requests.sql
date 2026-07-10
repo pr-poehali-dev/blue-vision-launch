@@ -1,0 +1,1 @@
+ALTER TABLE t_p30360196_blue_vision_launch.requests ADD COLUMN IF NOT EXISTS file_url text NOT NULL DEFAULT '';

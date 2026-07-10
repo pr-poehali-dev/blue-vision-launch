@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, ChangeEvent } from "react"
 import { Header } from "../components/Header"
 import { Footer } from "../components/Footer"
 import { HighlightedText } from "../components/HighlightedText"
@@ -46,6 +46,34 @@ const materials = [
   { name: "Алюминий", range: "0,5 – 6 мм" },
 ]
 
+const steps = [
+  {
+    icon: "Send",
+    title: "Отправляете заявку",
+    description: "Оставляете заявку на сайте, звоните или пишете в мессенджер — прикладываете чертёж, если он есть.",
+  },
+  {
+    icon: "Calculator",
+    title: "Получаете расчёт",
+    description: "Рассчитываем стоимость и сроки изготовления из вашего или нашего металла — обычно в течение дня.",
+  },
+  {
+    icon: "FileCheck",
+    title: "Согласовываем заказ",
+    description: "Фиксируем цену, сроки и технические детали — запускаем заказ в производство.",
+  },
+  {
+    icon: "Cog",
+    title: "Выполняем работы",
+    description: "Режем, гнём, свариваем и красим — контролируем качество на каждом этапе.",
+  },
+  {
+    icon: "Truck",
+    title: "Доставляем заказ",
+    description: "Отгружаем самовывозом или организуем доставку транспортной компанией по всей России.",
+  },
+]
+
 const faqs = [
   {
     question: "Какие файлы нужны для расчёта заказа?",
@@ -69,9 +97,23 @@ export default function LaserCutting() {
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [description, setDescription] = useState("")
+  const [file, setFile] = useState<File | null>(null)
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState("")
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0]
+    if (f) setFile(f)
+  }
+
+  const fileToBase64 = (f: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve((reader.result as string).split(",")[1])
+      reader.onerror = reject
+      reader.readAsDataURL(f)
+    })
 
   const handleSend = async () => {
     if (!name.trim() || !phone.trim()) {
@@ -81,6 +123,12 @@ export default function LaserCutting() {
     setSending(true)
     setError("")
     try {
+      let file_data = ""
+      let file_name = ""
+      if (file) {
+        file_data = await fileToBase64(file)
+        file_name = file.name
+      }
       await fetch(SEND_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -90,6 +138,8 @@ export default function LaserCutting() {
           duct_type: "Лазерная резка металла",
           dimensions: description,
           area: "",
+          file_data,
+          file_name,
         }),
       })
       setSent(true)
@@ -331,6 +381,32 @@ export default function LaserCutting() {
         </div>
       </section>
 
+      {/* Порядок работы */}
+      <section className="py-24 md:py-32 bg-secondary/50">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-3xl mb-16">
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Как мы работаем</p>
+            <h2 className="text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-balance">
+              Понятный <HighlightedText>порядок работы</HighlightedText>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
+            {steps.map((step, i) => (
+              <div key={step.title} className="relative">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-9 h-9 flex items-center justify-center rounded-full bg-orange-500 text-white text-sm font-bold shrink-0">
+                    {i + 1}
+                  </span>
+                  <Icon name={step.icon} size={28} className="text-orange-500" />
+                </div>
+                <h3 className="text-lg font-medium mb-2">{step.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12">
@@ -393,6 +469,18 @@ export default function LaserCutting() {
                   rows={3}
                   className="bg-white/10 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-orange-400 resize-none"
                 />
+                <label className="flex items-center gap-3 bg-white/10 border border-white/30 border-dashed rounded-lg px-4 py-3 text-white/70 cursor-pointer hover:border-orange-400 transition-colors">
+                  <Icon name="Paperclip" size={18} />
+                  <span className="text-sm truncate">
+                    {file ? file.name : "Прикрепить чертёж (DXF, DWG, PDF, JPG, PNG)"}
+                  </span>
+                  <input
+                    type="file"
+                    accept=".dxf,.dwg,.pdf,.jpg,.jpeg,.png,.step,.stp,.cdr"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                </label>
                 {error && <p className="text-red-300 text-sm">{error}</p>}
                 <button
                   onClick={handleSend}
