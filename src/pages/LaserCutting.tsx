@@ -148,6 +148,69 @@ export default function LaserCutting() {
         </div>
       </section>
 
+      {/* О производстве */}
+      <section className="py-24 md:py-32 bg-secondary/50">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-3xl mb-16">
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">О производстве</p>
+            <h2 className="text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight mb-6 text-balance">
+              Металлообработка <HighlightedText>полного цикла</HighlightedText> с 2008 года
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Более 17 лет мы работаем с чёрным и нержавеющим металлом, превращая листовой прокат в готовые изделия. Наше производство — это не просто цех, это точность, выверенная временем.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-background border border-border overflow-hidden">
+              <img
+                src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/1f6977e1-411c-4e24-b066-2c36b929ae25.jpg"
+                alt="Лазерная резка металла"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-medium mb-3">Лазерная резка</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Мы режем металл чисто и быстро. Доступны любые марки: от конструкционной стали до оцинковки и нержавейки. Диапазон толщин — от 0,5 до 16 мм. Это позволяет нам браться как за ювелирно тонкие детали, так и за мощные силовые элементы.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-background border border-border overflow-hidden">
+              <img
+                src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/858543c7-5521-4b2b-ac64-1882057db6d6.jpg"
+                alt="Гибка металла"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-medium mb-3">Профессиональная гибка</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Трёхметровый листогиб с усилием до 3 мм — мы гнём длинномерные заготовки с идеальным углом без риска трещин и деформации металла.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-background border border-border overflow-hidden">
+              <img
+                src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/646b8db6-2604-4df5-8393-01b337cab8bc.jpg"
+                alt="Сварка металлоконструкций"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-medium mb-3">Сварка любой сложности</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  В нашем арсенале есть всё: полуавтомат для чистых швов, точечная сварка для бесшовного соединения и ручная сварка по кругу (аргонодуговая) для эстетичных и герметичных конструкций.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-muted-foreground text-lg leading-relaxed mt-12 max-w-3xl">
+            Мы берём на себя весь цикл: от раскроя на лазере до финальной сборки и изготовления металлоконструкций.
+          </p>
+        </div>
+      </section>
+
       {/* Преимущества */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12">
