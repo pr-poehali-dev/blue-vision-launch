@@ -253,6 +253,36 @@ export default function LaserCutting() {
         </div>
       </section>
 
+      {/* Галерея работ */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-3xl mb-12">
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Портфолио</p>
+            <h2 className="text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-balance">
+              Примеры <HighlightedText>выполненных работ</HighlightedText>
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/1fbe961b-054b-4f0f-b014-4c0bbbb5b284.jpg", label: "Раскрой деталей" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/783c9a8e-4318-4e9a-9a34-101f2c6e4a0b.jpg", label: "Сварная металлоконструкция" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/edea7e74-168e-4776-835a-5898e55b0d22.jpg", label: "Корпус из нержавейки" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/935e2f4c-dc52-416a-9fa5-91989458dd2b.jpg", label: "Декоративная панель" },
+            ].map((item) => (
+              <div key={item.label} className="group relative overflow-hidden bg-secondary">
+                <img
+                  src={item.src}
+                  alt={item.label}
+                  className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <p className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12">
