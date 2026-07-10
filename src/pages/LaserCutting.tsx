@@ -416,6 +416,42 @@ export default function LaserCutting() {
         </div>
       </section>
 
+      {/* Доставка */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Доставка</p>
+              <h2 className="text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight mb-6 text-balance">
+                Доставим заказ <HighlightedText>в любой город</HighlightedText>
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                Собственным транспортом доставляем по Набережным Челнам, Елабуге и Нижнекамску. В другие регионы отправляем транспортными компаниями — подберём удобный и выгодный маршрут.
+              </p>
+              <a
+                href="#order"
+                className="inline-flex items-center gap-2 text-orange-500 font-medium hover:text-orange-600 transition-colors"
+              >
+                Обсудить доставку
+                <Icon name="ArrowRight" size={18} />
+              </a>
+            </div>
+            <div className="grid grid-cols-3 gap-4">
+              {[
+                { icon: "Truck", label: "Набережные Челны" },
+                { icon: "MapPin", label: "Елабуга" },
+                { icon: "MapPin", label: "Нижнекамск" },
+              ].map((city) => (
+                <div key={city.label} className="bg-secondary/50 border border-border p-6 text-center flex flex-col items-center gap-3">
+                  <Icon name={city.icon} size={28} className="text-orange-500" />
+                  <p className="text-sm font-medium">{city.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Галерея работ */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12">
