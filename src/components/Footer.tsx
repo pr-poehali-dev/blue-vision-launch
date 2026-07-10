@@ -1,4 +1,10 @@
+import { useLocation } from "react-router-dom"
+
 export function Footer() {
+  const location = useLocation()
+  const isHome = location.pathname === "/"
+  const anchor = (hash: string) => (isHome ? hash : `/${hash}`)
+
   return (
     <footer className="py-16 md:py-24 border-t border-border">
       <div className="container mx-auto px-6 md:px-12">
@@ -19,22 +25,22 @@ export function Footer() {
             <h4 className="text-sm font-medium mb-4">Разделы</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>
-                <a href="#projects" className="hover:text-foreground transition-colors">
+                <a href={anchor("#projects")} className="hover:text-foreground transition-colors">
                   Проекты
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:text-foreground transition-colors">
+                <a href={anchor("#about")} className="hover:text-foreground transition-colors">
                   Производство
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-foreground transition-colors">
+                <a href={anchor("#services")} className="hover:text-foreground transition-colors">
                   Услуги
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-foreground transition-colors">
+                <a href={anchor("#contact")} className="hover:text-foreground transition-colors">
                   Контакты
                 </a>
               </li>
@@ -74,16 +80,8 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-border flex flex-col md:flex-row md:items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="pt-8 border-t border-border text-sm text-muted-foreground">
           <p>© 2025 ООО ПФ «СпецПромАгрегат-Вент». Все права защищены. · 🛡️ Лицензия МЧС России</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">
-              Политика конфиденциальности
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Условия использования
-            </a>
-          </div>
         </div>
       </div>
     </footer>

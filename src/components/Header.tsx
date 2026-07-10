@@ -1,9 +1,12 @@
 import { useState, useEffect, MouseEvent } from "react"
+import { useLocation } from "react-router-dom"
 import { cn } from "../lib/utils"
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const location = useLocation()
+  const isHome = location.pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,9 +21,13 @@ export function Header() {
   }
 
   const scrollToTop = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    window.scrollTo({ top: 0, behavior: "smooth" })
+    if (isHome) {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
   }
+
+  const anchor = (hash: string) => (isHome ? hash : `/${hash}`)
 
   return (
     <header
@@ -58,7 +65,7 @@ export function Header() {
           ].map((item) => (
             <li key={item.label}>
               <a
-                href={item.href}
+                href={anchor(item.href)}
                 className="block px-2 py-1.5 rounded text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 whitespace-nowrap font-medium tracking-wide"
               >
                 {item.label}
@@ -68,7 +75,7 @@ export function Header() {
         </ul>
 
         <a
-          href="#contact"
+          href={anchor("#contact")}
           className="hidden xl:inline-flex items-center gap-2 text-sm px-4 py-2 transition-all duration-300 bg-orange-500 hover:bg-orange-600 text-white font-medium shrink-0"
         >
           Связаться
@@ -114,7 +121,7 @@ export function Header() {
             ].map((item) => (
               <li key={item.label}>
                 <a
-                  href={item.href}
+                  href={anchor(item.href)}
                   className="hover:text-[rgb(251,146,60)] transition-colors duration-300 text-white text-2xl font-light block"
                   onClick={closeMobileMenu}
                 >
@@ -125,7 +132,7 @@ export function Header() {
           </ul>
 
           <a
-            href="#contact"
+            href={anchor("#contact")}
             className="inline-flex items-center justify-center gap-2 text-sm px-5 py-2.5 bg-white text-foreground border border-foreground/20 hover:bg-foreground hover:text-white transition-all duration-300 mb-6"
             onClick={closeMobileMenu}
           >
