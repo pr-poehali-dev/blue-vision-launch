@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Plus } from "lucide-react"
+import Icon from "@/components/ui/icon"
 
 const faqs = [
   {
@@ -61,7 +61,8 @@ export function FAQ() {
                 <span className="text-lg font-medium text-foreground transition-colors group-hover:text-foreground/70">
                   {faq.question}
                 </span>
-                <Plus
+                <Icon
+                  name="Plus"
                   className={`w-6 h-6 text-foreground flex-shrink-0 transition-transform duration-300 ${
                     openIndex === index ? "rotate-45" : "rotate-0"
                   }`}

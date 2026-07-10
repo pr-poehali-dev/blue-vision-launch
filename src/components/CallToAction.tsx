@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react"
 import { HighlightedText } from "./HighlightedText"
 import Icon from "@/components/ui/icon"
 
@@ -26,7 +25,7 @@ export function CallToAction() {
               className="inline-flex items-center justify-center gap-3 bg-primary-foreground text-foreground px-8 py-4 text-sm tracking-wide hover:bg-primary-foreground/90 transition-colors duration-300 group"
             >
               Отправить запрос
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <Icon name="ArrowRight" className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="tel:+79274654464"

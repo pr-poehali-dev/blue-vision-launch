@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react"
-import { ArrowDown } from "lucide-react"
 import Icon from "@/components/ui/icon"
 
 export function Hero() {
@@ -176,7 +175,7 @@ export function Hero() {
 
       {animationComplete && (
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 animate-bounce z-30">
-          <ArrowDown className="w-5 h-5 text-muted-foreground" />
+          <Icon name="ArrowDown" className="w-5 h-5 text-muted-foreground" />
         </div>
       )}
     </section>
