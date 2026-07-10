@@ -178,14 +178,14 @@ export default function LaserCutting() {
 
             <div className="bg-background border border-border overflow-hidden">
               <img
-                src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/858543c7-5521-4b2b-ac64-1882057db6d6.jpg"
-                alt="Гибка металла"
+                src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/e5849f13-8fb6-4aee-9543-62590e72aaa9.jpeg"
+                alt="Гибка металла на оборудовании с ЧПУ"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
                 <h3 className="text-xl font-medium mb-3">Профессиональная гибка</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Трёхметровый листогиб с усилием до 3 мм — мы гнём длинномерные заготовки с идеальным углом без риска трещин и деформации металла.
+                  Гибка производится на оборудовании с ЧПУ, максимальная длина гиба до 3 метров.
                 </p>
               </div>
             </div>
