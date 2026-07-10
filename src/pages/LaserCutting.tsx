@@ -45,6 +45,9 @@ const materials = [
   { name: "Оцинкованная сталь", range: "0,5 – 3 мм" },
   { name: "Нержавеющая сталь", range: "0,5 – 6 мм" },
   { name: "Алюминий", range: "0,5 – 6 мм" },
+  { name: "Медь", range: "0,5 – 3 мм" },
+  { name: "Бронза", range: "0,5 – 2 мм" },
+  { name: "Бронированная сталь", range: "до 12 мм" },
 ]
 
 const steps = [
@@ -84,8 +87,7 @@ const galleryItems = [
   { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/3d5a09d8-5b9e-4155-a565-4d48c3e590c5.jpg", label: "Детали сложной геометрии", category: "Резка" },
   { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/aafb9720-e037-4249-8afc-312633761720.jpg", label: "Резка листового металла", category: "Резка" },
 
-  { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/bbbd5555-6270-47a2-8207-a153fb6142c2.jpg", label: "Гиб длиной 3 метра", category: "Гибка" },
-  { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/4f310f99-3442-4460-925c-0e71d56d9348.jpg", label: "Длинномерные профили после гибки", category: "Гибка" },
+  { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/4c490696-1944-41bd-b1cb-ba48f8dfee0a.jpg", label: "Гиб длиной 3 метра", category: "Гибка" },
   { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/3e473478-ea6a-4c58-83e2-9370eb300216.jpg", label: "Корпус из гнутого металла", category: "Гибка" },
   { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/9244203d-392e-4415-ac87-8a44626d7093.jpg", label: "П-образный профиль", category: "Гибка" },
   { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/74f96269-f8f5-4d0a-bae6-e029f0ee51ec.jpg", label: "Партия кронштейнов и пластин", category: "Гибка" },
@@ -369,11 +371,6 @@ export default function LaserCutting() {
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              {
-                src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/fa3fb977-bcbe-4f03-a1d4-d414947e72b2.jpg",
-                title: "Строительство",
-                text: "Фермы, косынки, закладные и пластины для ангаров и быстровозводимых конструкций.",
-              },
               {
                 src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/8285a866-1f78-4587-92bb-1e17c9013673.jpg",
                 title: "Машиностроение",
