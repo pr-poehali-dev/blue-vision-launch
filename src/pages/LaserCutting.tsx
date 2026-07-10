@@ -471,6 +471,10 @@ export default function LaserCutting() {
               { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/783c9a8e-4318-4e9a-9a34-101f2c6e4a0b.jpg", label: "Сварная металлоконструкция" },
               { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/edea7e74-168e-4776-835a-5898e55b0d22.jpg", label: "Корпус из нержавейки" },
               { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/935e2f4c-dc52-416a-9fa5-91989458dd2b.jpg", label: "Декоративная панель" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/5e42e331-5880-4833-aff3-36bd6b1969b2.jpg", label: "Детали после порошковой покраски" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/6bdb17ef-82fa-4527-9d50-d1e15717d772.jpg", label: "Лазерная гравировка и перфорация" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/74f96269-f8f5-4d0a-bae6-e029f0ee51ec.jpg", label: "Партия кронштейнов и пластин" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/3d5a09d8-5b9e-4155-a565-4d48c3e590c5.jpg", label: "Детали сложной геометрии" },
             ].map((item) => (
               <div key={item.label} className="group relative overflow-hidden bg-secondary">
                 <img
