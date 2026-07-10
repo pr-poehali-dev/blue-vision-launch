@@ -338,7 +338,7 @@ export default function LaserCutting() {
               { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/e5849f13-8fb6-4aee-9543-62590e72aaa9.jpeg", label: "Листогибочный пресс ERMAKSAN", specs: "Длина гиба до 3 м" },
               { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/3fd02066-0409-4b48-9ab2-d72c85506dcb.jpeg", label: "Стол раскроя FARLEY", specs: "Размер стола 1500×3000 мм" },
               { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/1922cdba-8fb0-460b-aa02-cb3bbba3c855.jpeg", label: "Раскрой листового металла", specs: "" },
-              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/f955dc34-96f8-4c08-ab89-16f79786a5ab.jpg", label: "Камера порошковой покраски", specs: "" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/1dcfcf9c-dbc0-46a7-bfba-b4b7dcac4567.jpg", label: "Камера порошковой покраски", specs: "" },
               { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/d2a9f127-d92e-43e2-b350-ee5f75d4caa6.jpeg", label: "Готовые детали с производства", specs: "" },
             ].map((item) => (
               <div key={item.label} className="group relative overflow-hidden bg-secondary">
