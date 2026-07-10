@@ -211,6 +211,40 @@ export default function LaserCutting() {
         </div>
       </section>
 
+      {/* Наше оборудование */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="max-w-3xl mb-12">
+            <p className="text-muted-foreground text-sm tracking-[0.3em] uppercase mb-6">Наш цех</p>
+            <h2 className="text-4xl md:text-5xl font-medium leading-[1.15] tracking-tight text-balance">
+              Собственное <HighlightedText>оборудование</HighlightedText>
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mt-6">
+              Работаем на профессиональных станках, которые позволяют раскраивать, гнуть и обрабатывать металл с высокой точностью.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/c541e0c1-7c7a-4ef9-904f-1c78c621ad2f.jpeg", label: "Станок лазерной резки HSG" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/e5849f13-8fb6-4aee-9543-62590e72aaa9.jpeg", label: "Листогибочный пресс ERMAKSAN" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/3fd02066-0409-4b48-9ab2-d72c85506dcb.jpeg", label: "Стол раскроя FARLEY" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/1922cdba-8fb0-460b-aa02-cb3bbba3c855.jpeg", label: "Раскрой листового металла" },
+              { src: "https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/d2a9f127-d92e-43e2-b350-ee5f75d4caa6.jpeg", label: "Готовые детали с производства" },
+            ].map((item) => (
+              <div key={item.label} className="group relative overflow-hidden bg-secondary">
+                <img
+                  src={item.src}
+                  alt={item.label}
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <p className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Преимущества */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12">
