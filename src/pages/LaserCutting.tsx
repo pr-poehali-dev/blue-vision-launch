@@ -195,6 +195,20 @@ export default function LaserCutting() {
               +7 (927) 465-44-64
             </a>
           </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 mt-16 pt-10 border-t border-white/15">
+            {[
+              { value: "2008", label: "год основания" },
+              { value: "0,1 мм", label: "точность резки" },
+              { value: "0,5–16 мм", label: "диапазон толщин" },
+              { value: "1–3 дня", label: "срок изготовления" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-3xl md:text-4xl font-medium text-white">{stat.value}</p>
+                <p className="text-white/60 text-xs md:text-sm tracking-wide uppercase mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
