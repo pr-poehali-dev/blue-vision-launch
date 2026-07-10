@@ -11,6 +11,7 @@ import { VentParts } from "../components/VentParts"
 import { FAQ } from "../components/FAQ"
 import { CallToAction } from "../components/CallToAction"
 import { Footer } from "../components/Footer"
+import { ConsultationWidget } from "../components/ConsultationWidget"
 
 export default function Index() {
   return (
@@ -28,6 +29,7 @@ export default function Index() {
       <VentEquipment />
       <VentParts />
       <Footer />
+      <ConsultationWidget />
     </main>
   )
 }

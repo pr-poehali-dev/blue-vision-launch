@@ -2,6 +2,7 @@ import { useState, ChangeEvent } from "react"
 import { Header } from "../components/Header"
 import { Footer } from "../components/Footer"
 import { HighlightedText } from "../components/HighlightedText"
+import { ConsultationWidget } from "../components/ConsultationWidget"
 import Icon from "@/components/ui/icon"
 
 const SEND_URL = "https://functions.poehali.dev/a30293a9-d214-4e7b-ae44-ddcfc031adff"
@@ -612,6 +613,7 @@ export default function LaserCutting() {
       </section>
 
       <Footer />
+      <ConsultationWidget />
     </main>
   )
 }
