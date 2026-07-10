@@ -161,7 +161,7 @@ export default function LaserCutting() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-background border border-border overflow-hidden">
               <img
                 src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/1f6977e1-411c-4e24-b066-2c36b929ae25.jpg"
@@ -200,6 +200,20 @@ export default function LaserCutting() {
                 <h3 className="text-xl font-medium mb-3">Сварка любой сложности</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   В нашем арсенале есть всё: полуавтомат для чистых швов, точечная сварка для бесшовного соединения и ручная сварка по кругу (аргонодуговая) для эстетичных и герметичных конструкций.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-background border border-border overflow-hidden">
+              <img
+                src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/61de4259-b33c-4bc9-bf3c-fee9368aabff.jpg"
+                alt="Порошковая покраска металла"
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-medium mb-3">Порошковая покраска</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Наносим прочное защитно-декоративное покрытие в широкой цветовой гамме — детали и конструкции служат дольше и не боятся коррозии.
                 </p>
               </div>
             </div>
