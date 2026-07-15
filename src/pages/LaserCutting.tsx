@@ -225,6 +225,15 @@ export default function LaserCutting() {
               <Icon name="Phone" size={16} />
               +7 (927) 465-44-64
             </a>
+            <a
+              href="https://wa.me/79274654464"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-8 py-4 text-sm tracking-wide hover:bg-white/10 transition-colors"
+            >
+              <Icon name="MessageCircle" size={16} />
+              WhatsApp
+            </a>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 mt-16 pt-10 border-t border-white/15">
@@ -643,6 +652,10 @@ export default function LaserCutting() {
               <a href="mailto:specpromagregat-vent@yandex.ru" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 <Icon name="Mail" size={16} />
                 <span className="text-sm">specpromagregat-vent@yandex.ru</span>
+              </a>
+              <a href="https://wa.me/79274654464" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <Icon name="MessageCircle" size={16} />
+                <span className="text-sm">WhatsApp</span>
               </a>
               <div className="flex items-center gap-3 text-primary-foreground/80">
                 <Icon name="Clock" size={16} />
