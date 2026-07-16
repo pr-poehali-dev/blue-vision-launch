@@ -202,6 +202,8 @@ export default function LaserCutting() {
           <img
             src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/1f6977e1-411c-4e24-b066-2c36b929ae25.jpg"
             alt="Лазерная резка металла"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/60" />
