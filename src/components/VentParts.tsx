@@ -2,6 +2,7 @@ import { useState } from "react"
 import { HighlightedText } from "./HighlightedText"
 import Icon from "@/components/ui/icon"
 import { SEND_URL } from "./calculator-types"
+import { isValidPhone } from "@/lib/validatePhone"
 
 const parts = [
   { name: "Шина монтажная", description: "Перфорированная металлическая шина для крепления воздуховодов и оборудования", icon: "Minus" },
@@ -24,6 +25,7 @@ export function VentParts() {
 
   const sendRequest = async () => {
     if (!name.trim() || !phone.trim()) { setFormError("Заполните имя и телефон"); return }
+    if (!isValidPhone(phone)) { setFormError("Проверьте номер телефона"); return }
     setSending(true); setFormError("")
     try {
       await fetch(SEND_URL, {

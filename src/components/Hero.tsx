@@ -122,6 +122,8 @@ export function Hero() {
         <img
           src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/d09f79d2-e200-4f6a-b5ed-d67d3a2209a6.jpg"
           alt="Производство воздуховодов из оцинкованной стали"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/40" />

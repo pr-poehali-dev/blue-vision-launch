@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
+import { isValidPhone } from "@/lib/validatePhone";
 
 const PROMO_URL = "https://functions.poehali.dev/d9308bdb-86ba-4cd8-8802-c08ced05307f";
 const SEND_URL = "https://functions.poehali.dev/a30293a9-d214-4e7b-ae44-ddcfc031adff";
@@ -29,7 +30,7 @@ export function PromoBanner() {
   }, []);
 
   const handleSend = async () => {
-    if (!name.trim() || !phone.trim()) return;
+    if (!name.trim() || !phone.trim() || !isValidPhone(phone)) return;
     setSending(true);
     await fetch(SEND_URL, {
       method: "POST",
@@ -58,6 +59,8 @@ export function PromoBanner() {
               <img
                 src={promo.image_url}
                 alt={promo.title}
+                loading="lazy"
+                decoding="async"
                 className="h-10 w-10 object-cover rounded shadow-md"
               />
             )}
@@ -109,7 +112,7 @@ export function PromoBanner() {
               />
               <button
                 onClick={handleSend}
-                disabled={sending || !name.trim() || !phone.trim()}
+                disabled={sending || !name.trim() || !phone.trim() || !isValidPhone(phone)}
                 className="bg-white text-orange-600 font-bold text-xs px-3 py-1.5 rounded-full hover:bg-orange-50 transition-colors disabled:opacity-60 whitespace-nowrap"
               >
                 {sending ? "Отправляю..." : "Отправить"}

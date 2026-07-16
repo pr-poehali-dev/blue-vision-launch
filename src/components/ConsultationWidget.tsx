@@ -7,6 +7,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog"
 import Icon from "@/components/ui/icon"
+import { isValidPhone } from "@/lib/validatePhone"
 
 const SEND_URL = "https://functions.poehali.dev/a30293a9-d214-4e7b-ae44-ddcfc031adff"
 
@@ -21,6 +22,10 @@ export function ConsultationWidget() {
   const handleSend = async () => {
     if (!name.trim() || !phone.trim()) {
       setError("Заполните имя и телефон")
+      return
+    }
+    if (!isValidPhone(phone)) {
+      setError("Проверьте номер телефона")
       return
     }
     setSending(true)

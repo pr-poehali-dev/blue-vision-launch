@@ -5,6 +5,7 @@ import { HighlightedText } from "../components/HighlightedText"
 import { ConsultationWidget } from "../components/ConsultationWidget"
 import Icon from "@/components/ui/icon"
 import { usePageMeta } from "@/hooks/usePageMeta"
+import { isValidPhone } from "@/lib/validatePhone"
 
 const SEND_URL = "https://functions.poehali.dev/a30293a9-d214-4e7b-ae44-ddcfc031adff"
 
@@ -157,8 +158,7 @@ export default function LaserCutting() {
       setError("Заполните имя и телефон")
       return
     }
-    const digits = phone.replace(/\D/g, "")
-    if (digits.length < 10) {
+    if (!isValidPhone(phone)) {
       setError("Проверьте номер телефона")
       return
     }

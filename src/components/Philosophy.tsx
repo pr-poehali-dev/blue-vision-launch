@@ -69,6 +69,8 @@ export function Philosophy() {
               <img
                 src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/adf60496-c3fe-4ef9-a770-b0a376bec2b3.jpg"
                 alt="Производство воздуховодов из оцинкованной стали"
+                loading="lazy"
+                decoding="async"
                 className="opacity-90 relative z-10 w-auto"
               />
             </div>
