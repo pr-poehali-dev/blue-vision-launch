@@ -290,6 +290,8 @@ export default function LaserCutting() {
               <img
                 src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/1f6977e1-411c-4e24-b066-2c36b929ae25.jpg"
                 alt="Лазерная резка металла"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
@@ -304,6 +306,8 @@ export default function LaserCutting() {
               <img
                 src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/bucket/e5849f13-8fb6-4aee-9543-62590e72aaa9.jpeg"
                 alt="Гибка металла на оборудовании с ЧПУ"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
@@ -318,6 +322,8 @@ export default function LaserCutting() {
               <img
                 src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/646b8db6-2604-4df5-8393-01b337cab8bc.jpg"
                 alt="Сварка металлоконструкций"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
@@ -332,6 +338,8 @@ export default function LaserCutting() {
               <img
                 src="https://cdn.poehali.dev/projects/07c52384-035c-44ad-8118-a882037d4442/files/61de4259-b33c-4bc9-bf3c-fee9368aabff.jpg"
                 alt="Порошковая покраска металла"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
@@ -374,6 +382,8 @@ export default function LaserCutting() {
                 <img
                   src={item.src}
                   alt={item.label}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -421,6 +431,8 @@ export default function LaserCutting() {
                 <img
                   src={item.src}
                   alt={item.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full sm:w-40 h-40 object-cover shrink-0 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="p-6">
@@ -543,6 +555,8 @@ export default function LaserCutting() {
                 <img
                   src={item.src}
                   alt={item.label}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
