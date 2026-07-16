@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Admin from "./pages/Admin";
 import LaserCutting from "./pages/LaserCutting";
 import NotFound from "./pages/NotFound";
+import { MetrikaRouteTracker } from "./components/MetrikaRouteTracker";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <MetrikaRouteTracker />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/admin" element={<Admin />} />
