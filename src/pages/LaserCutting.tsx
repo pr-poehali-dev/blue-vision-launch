@@ -4,6 +4,7 @@ import { Footer } from "../components/Footer"
 import { HighlightedText } from "../components/HighlightedText"
 import { ConsultationWidget } from "../components/ConsultationWidget"
 import Icon from "@/components/ui/icon"
+import { usePageMeta } from "@/hooks/usePageMeta"
 
 const SEND_URL = "https://functions.poehali.dev/a30293a9-d214-4e7b-ae44-ddcfc031adff"
 
@@ -121,6 +122,11 @@ const faqs = [
 ]
 
 export default function LaserCutting() {
+  usePageMeta({
+    title: "Лазерная резка металла на заказ — Набережные Челны, Татарстан",
+    description: "Лазерная резка чёрной, оцинкованной и нержавеющей стали толщиной 0,5–16 мм по вашим чертежам. Точность 0,1 мм, изготовление 1–3 дня, доставка по России.",
+  })
+
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [description, setDescription] = useState("")
@@ -149,6 +155,11 @@ export default function LaserCutting() {
   const handleSend = async () => {
     if (!name.trim() || !phone.trim()) {
       setError("Заполните имя и телефон")
+      return
+    }
+    const digits = phone.replace(/\D/g, "")
+    if (digits.length < 10) {
+      setError("Проверьте номер телефона")
       return
     }
     setSending(true)
